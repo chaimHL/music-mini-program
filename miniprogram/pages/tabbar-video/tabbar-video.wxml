@@ -1,2 +1,11 @@
 <!--pages/tabbar-video/tabbar-video.wxml-->
-<text>pages/tabbar-video/tabbar-video.wxml</text>
+<view>
+  <block wx:for="{{mvList}}" wx:key="id">
+    <view>
+      <view>
+        <image src="{{item.cover}}" mode="widthFix" />
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+  </block>
+</view>
