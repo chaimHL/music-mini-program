@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "视频",
-  "usingComponents": {}
+  "usingComponents": {
+    "mv-item": "/components/mv-item/mv-item"
+  }
 }

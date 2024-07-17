@@ -1,11 +1,6 @@
 <!--pages/tabbar-video/tabbar-video.wxml-->
-<view>
+<view class="mv-list">
   <block wx:for="{{mvList}}" wx:key="id">
-    <view>
-      <view>
-        <image src="{{item.cover}}" mode="widthFix" />
-      </view>
-      <text>{{item.name}}</text>
-    </view>
+    <mv-item class="mv-item" mvData="{{item}}" />
   </block>
 </view>

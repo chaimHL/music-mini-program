@@ -1,0 +1,29 @@
+// 格式化数字，当数字大于 1w 时显示单位为'万'
+function formatCount(count) {
+  count = Number(count)
+  if (count > 9999) {
+    return (count / 10000).toFixed(1) + '万'
+  } else {
+    return count
+  }
+}
+
+// 格式化时间
+function formatTime(time) {
+  time = Number(time)
+  time = time / 1000
+  var min = Math.floor(time / 60)
+  var sec = time % 60
+  return padLeft(min) + ':' + padLeft(sec)
+}
+
+// 小于10则左边补上一个0
+function padLeft(str) {
+  str = str + ''
+  return ('00' + str).slice(str.length)
+}
+
+module.exports = {
+  formatCount: formatCount,
+  formatTime: formatTime
+}

@@ -1,1 +1,10 @@
 /**app.wxss**/
+@import "./assets/icons/iconfont";
+
+page,
+view,
+text,
+swiper,
+image {
+  box-sizing: border-box;
+}

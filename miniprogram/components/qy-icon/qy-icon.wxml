@@ -1,0 +1,2 @@
+<!--components/qy-icon/qy-icon.wxml-->
+<text class="icon iconfont {{name}}"></text>

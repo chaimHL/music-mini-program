@@ -1,0 +1,15 @@
+<!--components/mv-item/mv-item.wxml-->
+<wxs module="format" src="/utils/format.wxs"></wxs>
+<view>
+  <view class="img-box">
+    <image class="img" src="{{mvData.cover}}" mode="widthFix" />
+    <view class="note">
+      <view>
+        <qy-icon icon="icon" name="icon-bofangliang" />
+        <text class="count">{{format.formatCount(mvData.playCount)}}</text>
+      </view>
+      <text>{{format.formatTime(mvData.mv.videos[0].duration)}}</text>
+    </view>
+  </view>
+  <text class="info">{{mvData.name}} - {{mvData.artistName}}</text>
+</view>

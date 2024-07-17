@@ -1,1 +1,12 @@
 /* pages/tabbar-video/tabbar-video.wxss */
+.mv-list {
+  padding: 0 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .mv-item {
+    width: 48%;
+    margin-bottom: 20rpx;
+  }
+}
