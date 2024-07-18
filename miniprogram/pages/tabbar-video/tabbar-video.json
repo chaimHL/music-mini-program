@@ -2,5 +2,6 @@
   "navigationBarTitleText": "视频",
   "usingComponents": {
     "mv-item": "/components/mv-item/mv-item"
-  }
+  },
+  "enablePullDownRefresh": true
 }

@@ -1,6 +1,6 @@
 import qyRequest from '../index'
 
-export function topMv(limit = 20, offset = 0) {
+export function topMv(offset = 0, limit = 20) {
   return qyRequest.request({
     url: 'top/mv',
     data: {

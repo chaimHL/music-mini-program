@@ -1,6 +1,9 @@
 <!--pages/tabbar-video/tabbar-video.wxml-->
-<view class="mv-list">
-  <block wx:for="{{mvList}}" wx:key="id">
-    <mv-item class="mv-item" mvData="{{item}}" />
-  </block>
+<view>
+  <view class="mv-list">
+    <block wx:for="{{mvList}}" wx:key="id">
+      <mv-item class="mv-item" mvData="{{item}}" />
+    </block>
+  </view>
+  <view wx:if="{{!hasMore}}" class="no-more">到底了~</view>
 </view>
