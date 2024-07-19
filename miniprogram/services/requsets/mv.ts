@@ -9,3 +9,12 @@ export function topMv(offset = 0, limit = 20) {
     }
   })
 }
+
+export function mvUrl(id: string) {
+  return qyRequest.request({
+    url: 'mv/url',
+    data: {
+      id
+    }
+  })
+}

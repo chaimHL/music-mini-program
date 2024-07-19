@@ -1,6 +1,6 @@
 <!--components/mv-item/mv-item.wxml-->
 <wxs module="format" src="/utils/format.wxs"></wxs>
-<view>
+<view bind:tap="tapMvItem">
   <view class="img-box">
     <image class="img" src="{{mvData.cover}}" mode="widthFix" />
     <view class="note">

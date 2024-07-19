@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/tabbar-music/tabbar-music",
-    "pages/tabbar-video/tabbar-video"
+    "pages/tabbar-video/tabbar-video",
+    "pages/video-detail/video-detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
