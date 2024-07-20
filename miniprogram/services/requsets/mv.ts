@@ -18,3 +18,21 @@ export function mvUrl(id: string) {
     }
   })
 }
+
+export function mvDetail(mvid: string) {
+  return qyRequest.request({
+    url: 'mv/detail',
+    data: {
+      mvid
+    }
+  })
+}
+
+export function allvideo(id: string) {
+  return qyRequest.request({
+    url: 'related/allvideo',
+    data: {
+      id
+    }
+  })
+}

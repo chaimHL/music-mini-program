@@ -2,3 +2,18 @@
 .video {
   width: 100%;
 }
+
+.detail {
+  padding: 20rpx;
+
+  .name {
+    font-size: 40rpx;
+    font-weight: bold;
+  }
+
+  .artist {
+    margin-top: 12rpx;
+    font-size: 28rpx;
+    color: #666;
+  }
+}
