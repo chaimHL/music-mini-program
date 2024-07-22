@@ -22,11 +22,11 @@
       "selectedIconPath": "assets/imgs/tabbar/video_active.png"
     }]
   },
-  "style": "v2",
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "usingComponents": {
-    "qy-icon": "./components/qy-icon/qy-icon"
+    "qy-icon": "./components/qy-icon/qy-icon",
+    "van-button": "@vant/weapp/button/index"
   }
 }
