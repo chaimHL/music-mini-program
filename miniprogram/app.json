@@ -2,7 +2,8 @@
   "pages": [
     "pages/tabbar-music/tabbar-music",
     "pages/tabbar-video/tabbar-video",
-    "pages/video-detail/video-detail"
+    "pages/video-detail/video-detail",
+    "pages/search/search"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
@@ -26,7 +27,6 @@
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "usingComponents": {
-    "qy-icon": "./components/qy-icon/qy-icon",
-    "van-button": "@vant/weapp/button/index"
+    "qy-icon": "./components/qy-icon/qy-icon"
   }
 }

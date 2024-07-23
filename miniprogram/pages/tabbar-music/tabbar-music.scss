@@ -1,1 +1,11 @@
 /* pages/tabbar-music/tabbar-music.wxss */
+page {
+  background-color: #fbfbfb;
+  --search-background-color: #fff
+}
+
+.swiper {
+  .img {
+    width: 100%;
+  }
+}

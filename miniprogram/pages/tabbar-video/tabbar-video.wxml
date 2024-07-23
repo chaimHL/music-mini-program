@@ -5,5 +5,5 @@
       <mv-item class="mv-item" mvData="{{item}}" />
     </block>
   </view>
-  <view wx:if="{{!hasMore}}" class="no-more">到底了~</view>
+  <van-divider wx:if="{{!hasMore}}" contentPosition="center" dashed customStyle="padding-bottom: 20rpx">到底了~</van-divider>
 </view>
