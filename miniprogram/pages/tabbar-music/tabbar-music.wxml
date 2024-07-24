@@ -1,10 +1,10 @@
 <!--pages/tabbar-music/tabbar-music.wxml-->
 <van-search shape="round" background="#fbfbfb" placeholder="请输入搜索关键词" bind:click-input="onTapSearch" />
 
-<swiper class="swiper" circular indicator-dots>
+<swiper class="swiper" circular indicator-dots style="height: {{swipterHeight}}px;">
   <block wx:for="{{banners}}" wx:key="bannerId">
     <swiper-item>
-      <image class="img" src="{{item.pic}}" mode="widthFix" />
+      <image class="img" src="{{item.pic}}" mode="widthFix" bindload="onBannerLoad" />
     </swiper-item>
   </block>
 </swiper>
