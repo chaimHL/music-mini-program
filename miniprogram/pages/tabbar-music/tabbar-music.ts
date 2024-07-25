@@ -28,5 +28,9 @@ Page({
     this.setData({
       swipterHeight: res[0].height || 150
     })
+  },
+  // 点击了区块标题的更多
+  onTapMore() {
+    // console.log(1111)
   }
 })

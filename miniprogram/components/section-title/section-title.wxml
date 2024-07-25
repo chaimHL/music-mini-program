@@ -1,0 +1,8 @@
+<!--components/section-title/section-title.wxml-->
+<view class="title">
+  <view class="left">{{title}}</view>
+  <view wx:if="{{showMore}}" class="right" bind:tap="onTapMore">
+    <view>更多</view>
+    <van-icon name="arrow" />
+  </view>
+</view>
