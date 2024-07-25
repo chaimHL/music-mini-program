@@ -1,6 +1,9 @@
 // pages/tabbar-music/tabbar-music.ts
 import { getSelectorRect } from '../../utils/index'
 import banner from '../../services/requsets/banner'
+import { throttle } from 'underscore'
+
+const throttled = throttle(getSelectorRect, 100, { trailing: false })
 
 Page({
   data: {
@@ -21,7 +24,7 @@ Page({
   },
   // banner 图片加载完后执行
   async onBannerLoad() {
-    const res = await getSelectorRect('.img')
+    const res = await throttled('.img')
     this.setData({
       swipterHeight: res[0].height || 150
     })

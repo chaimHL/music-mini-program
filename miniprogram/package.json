@@ -10,9 +10,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@vant/weapp": "^1.11.6"
+    "@vant/weapp": "^1.11.6",
+    "underscore": "^1.13.7"
   },
   "devDependencies": {
+    "@types/underscore": "^1.11.15",
     "miniprogram-api-typings": "^3.12.2"
   }
 }
