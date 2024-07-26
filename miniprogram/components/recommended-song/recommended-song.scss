@@ -1,0 +1,26 @@
+/* components/recommended-song/recommended-song.wxss */
+.wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+
+  .image {
+    width: 120rpx;
+    height: 120rpx;
+  }
+
+  .des {
+    flex: 1;
+    margin-left: 16rpx;
+
+    .top {
+      font-size: 32rpx;
+    }
+
+    .bottom {
+      margin-top: 16rpx;
+      font-size: 28rpx;
+      color: #999;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<!--components/recommended-song/recommended-song.wxml-->
+<view class="wrap">
+  <image class="image" src="{{songData.al.picUrl}}" mode="widthFix" />
+  <view class="des">
+    <view class="top">{{songData.name}}</view>
+    <view class="bottom">{{songData.ar[0].name}}</view>
+  </view>
+  <van-icon name="arrow" color="#ddd" size="24rpx" />
+</view>
