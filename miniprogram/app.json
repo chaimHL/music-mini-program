@@ -3,7 +3,8 @@
     "pages/tabbar-music/tabbar-music",
     "pages/tabbar-video/tabbar-video",
     "pages/video-detail/video-detail",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/recommended-songs/recommended-songs"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
