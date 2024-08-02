@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-search": "@vant/weapp/search/index",
     "section-title": "/components/section-title/section-title",
-    "recommended-song": "/components/recommended-song/recommended-song"
+    "recommended-song": "/components/recommended-song/recommended-song",
+    "pop-song": "/components/pop-song/pop-song"
   },
   "navigationBarBackgroundColor": "#fbfbfb"
 }

@@ -1,0 +1,11 @@
+<!--components/pop-song/pop-song.wxml-->
+<wxs module="format" src="/utils/format.wxs"></wxs>
+<view>
+  <view class="top">
+    <image class="img" src="{{songData.coverImgUrl}}" mode="widthFix" />
+    <view class="count">{{format.formatCount(songData.playCount)}}</view>
+  </view>
+  <view class="bottom">
+    <text>{{songData.name}} | {{songData.description}}</text>
+  </view>
+</view>

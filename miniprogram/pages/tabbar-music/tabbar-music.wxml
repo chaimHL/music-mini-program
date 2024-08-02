@@ -9,9 +9,22 @@
   </block>
 </swiper>
 
-<section-title title="推荐歌曲" bind:tapMore="onTapMore" />
 <view>
-  <block wx:for="{{theFirst6Songs}}" wx:key="id">
-    <recommended-song songData="{{item}}" />
-  </block>
+  <section-title title="推荐歌曲" bind:tapMore="onTapMore" />
+  <view>
+    <block wx:for="{{theFirst6Songs}}" wx:key="id">
+      <recommended-song songData="{{item}}" />
+    </block>
+  </view>
+</view>
+
+<view class="mt-40">
+  <section-title title="热门歌单" bind:tapMore="onTapMore" showMore="{{false}}" />
+  <scroll-view class="pop-playlist" scroll-x style="width: {{screenWidth}}px;">
+    <block wx:for="{{popPlaylist}}" wx:key="id">
+      <view class="pop-item">
+        <pop-song songData="{{item}}" />
+      </view>
+    </block>
+  </scroll-view>
 </view>

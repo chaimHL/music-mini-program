@@ -15,3 +15,18 @@ page {
     width: 100%;
   }
 }
+
+.pop-playlist {
+  margin-left: -20rpx;
+  white-space: nowrap;
+
+  .pop-item {
+    display: inline-block;
+    width: 210rpx;
+    margin-left: 20rpx;
+
+    &:last-of-type {
+      margin-right: 20rpx;
+    }
+  }
+}

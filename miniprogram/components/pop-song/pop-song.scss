@@ -1,0 +1,32 @@
+/* components/pop-song/pop-song.wxss */
+.top {
+  width: 100%;
+  position: relative;
+  border-radius: 8rpx;
+  overflow: hidden;
+
+  .img {
+    width: 100%;
+  }
+
+  .count {
+    position: absolute;
+    bottom: 10rpx;
+    right: 0;
+    padding: 10rpx 8rpx;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    font-size: 22rpx;
+    color: #ffffff;
+  }
+}
+
+.bottom {
+  font-size: 28rpx;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: normal;
+  display: -webkit-box;
+}
