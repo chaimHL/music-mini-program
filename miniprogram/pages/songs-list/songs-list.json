@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "section-title": "/components/section-title/section-title",
+    "pop-song": "/components/pop-song/pop-song"
+  }
+}

@@ -22,5 +22,11 @@ export default {
         id
       }
     })
-  }
+  },
+  // 歌单类目
+  hot() {
+    return qyRequest.request({
+      url: `${url}/hot`
+    })
+  },
 }

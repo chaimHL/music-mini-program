@@ -1,0 +1,15 @@
+/* pages/songs-list/songs-list.wxss */
+page {
+  padding: 0 20rpx;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .song {
+    width: 49%;
+    margin-bottom: 30rpx;
+  }
+}

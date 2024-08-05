@@ -1,0 +1,13 @@
+<!--pages/songs-list/songs-list.wxml-->
+<view>
+  <block wx:for="{{list}}" wx:key="cat">
+    <section-title title="{{item.cat}}" showMore="{{false}}" />
+    <view class="list">
+      <block wx:for="{{item.playlists}}" wx:key="id" wx:for-item="song">
+        <view class="song">
+          <pop-song songData="{{song}}" />
+        </view>
+      </block>
+    </view>
+  </block>
+</view>

@@ -10,7 +10,7 @@
 </swiper>
 
 <view>
-  <section-title title="推荐歌曲" bind:tapMore="onTapMore" />
+  <section-title title="推荐歌曲" showMore="{{false}}" />
   <view>
     <block wx:for="{{theFirst6Songs}}" wx:key="id">
       <recommended-song songData="{{item}}" />
@@ -19,7 +19,7 @@
 </view>
 
 <view class="mt-40">
-  <section-title title="热门歌单" bind:tapMore="onTapMore" showMore="{{false}}" />
+  <section-title title="热门歌单" bind:tapMore="onTapMorePop" />
   <scroll-view class="pop-playlist" scroll-x style="width: {{screenWidth}}px;">
     <block wx:for="{{popPlaylist}}" wx:key="id">
       <view class="pop-item">

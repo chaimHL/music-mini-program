@@ -37,6 +37,7 @@ Page({
     // 获取热门歌单
     this.getPopPlaylist()
   },
+
   onUnload(this: any) {
     // 解绑
     this.storeBindings.destroyStoreBindings()
@@ -65,10 +66,10 @@ Page({
       swipterHeight: res[0].height || 150
     })
   },
-  // 点击了区块标题的更多
-  onTapMore() {
+  // 点击了热门歌单的更多
+  onTapMorePop() {
     wx.navigateTo({
-      url: '/pages/recommended-songs/recommended-songs'
+      url: '/pages/songs-list/songs-list'
     })
   },
   async getPlayList(this: any) {
