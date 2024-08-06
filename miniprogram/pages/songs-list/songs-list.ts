@@ -19,7 +19,6 @@ Page({
     }
     Promise.all(promiseList)
       .then(res => {
-        console.log(res);
         this.setData({
           list: res || []
         })

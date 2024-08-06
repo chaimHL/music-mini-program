@@ -15,6 +15,9 @@ export default {
   detail(id: number) {
     /**
      *  热歌 id = 3778678
+     *  新歌 id = 3779629
+     *  原创 id = 2884035
+     *  飙升 id = 19723756
      */
     return qyRequest.request({
       url: `${url}/detail`,

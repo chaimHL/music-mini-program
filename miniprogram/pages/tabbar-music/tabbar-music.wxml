@@ -28,3 +28,8 @@
     </block>
   </scroll-view>
 </view>
+
+<view class="mt-40">
+  <section-title title="巅峰榜" showMore="{{false}}" />
+
+</view>

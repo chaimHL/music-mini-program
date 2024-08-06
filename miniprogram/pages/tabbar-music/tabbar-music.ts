@@ -3,6 +3,7 @@ import { throttle } from 'underscore'
 
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { recommendedSongsStore } from '../../stores/recommended-songs'
+import { musicChartsStore } from '../../stores/music-charts'
 
 import { getSelectorRect } from '../../utils/index'
 
@@ -25,10 +26,17 @@ Page({
 
     this.getBanners()
     // 绑定 MobX store
-    this.storeBindings = createStoreBindings(this, {
+    this.recommendedSongsStoreBindings = createStoreBindings(this, {
       store: recommendedSongsStore,
       fields: ['theFirst6Songs'],
       actions: ['setPlayList']
+    })
+
+    // 巅峰榜
+    this.musicChartsStoreBindings = createStoreBindings(this, {
+      store: musicChartsStore,
+      fields: ['newSongList', 'originalSongList', 'soaringSongList'],
+      actions: ['newSong', 'originalSong', 'soaringSong']
     })
 
     // 获取推荐歌单
@@ -36,11 +44,15 @@ Page({
 
     // 获取热门歌单
     this.getPopPlaylist()
+
+    // 获取巅峰榜数据
+    this.getMusicCharts()
   },
 
   onUnload(this: any) {
     // 解绑
-    this.storeBindings.destroyStoreBindings()
+    this.recommendedSongsStoreBindings.destroyStoreBindings()
+    this.musicChartsStoreBindings.destroyStoreBindings()
   },
 
   getWindowInfo() {
@@ -77,12 +89,24 @@ Page({
     const arr = res.playlist.tracks
     this.setPlayList(arr || [])
   },
-
   async getPopPlaylist() {
     const res = await playlist.topList()
     const arr = res.playlists || []
     this.setData({
       popPlaylist: arr
     })
+  },
+  getMusicCharts(this: any) {
+    const ids: Record<string, number> = {
+      newSong: 3779629,
+      originalSong: 2884035,
+      soaringSong: 19723756
+    }
+    for (const key in ids) {
+      const id = ids[key]
+      playlist.detail(id).then(res => {
+        this[key](res.playlist || [])
+      })
+    }
   }
 })
