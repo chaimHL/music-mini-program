@@ -3,7 +3,8 @@
     "van-search": "@vant/weapp/search/index",
     "section-title": "/components/section-title/section-title",
     "recommended-song": "/components/recommended-song/recommended-song",
-    "pop-song": "/components/pop-song/pop-song"
+    "pop-song": "/components/pop-song/pop-song",
+    "ranking-block": "/components/ranking-block/ranking-block"
   },
   "navigationBarBackgroundColor": "#fbfbfb"
 }

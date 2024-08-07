@@ -1,0 +1,43 @@
+/* components/ranking-block/ranking-block.wxss */
+.wrap {
+  display: flex;
+  border-radius: 12rpx;
+  overflow: hidden;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  height: 240rpx;
+
+  .left {
+    flex-grow: 1;
+    background-color: #efefef;
+    padding: 20rpx;
+
+    .name {
+      margin-bottom: 12rpx;
+    }
+
+    .item {
+      font-size: 26rpx;
+      margin-bottom: 12rpx;
+    }
+  }
+
+  .right {
+    width: 240rpx;
+    position: relative;
+
+    .img {
+      width: 100%;
+    }
+
+    .count {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($color: #000000, $alpha: 0.8);
+      color: #fff;
+      font-size: 22rpx;
+      padding: 4rpx 8rpx;
+    }
+  }
+}

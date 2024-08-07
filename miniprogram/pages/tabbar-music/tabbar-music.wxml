@@ -31,5 +31,7 @@
 
 <view class="mt-40">
   <section-title title="巅峰榜" showMore="{{false}}" />
-
+  <ranking-block rankingList="{{newSongList}}" />
+  <ranking-block rankingList="{{originalSongList}}" />
+  <ranking-block rankingList="{{soaringSongList}}" />
 </view>

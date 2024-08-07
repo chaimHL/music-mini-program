@@ -1,0 +1,17 @@
+<!--components/ranking-block/ranking-block.wxml-->
+<wxs module="format" src="/utils/format.wxs"></wxs>
+<view class="wrap">
+  <view class="left">
+    <view class="name">{{rankingList.name}}</view>
+    <block wx:for="{{3}}" wx:key="*this">
+      <view class="item">
+        <text>{{index + 1}}.</text>
+        <text>{{rankingList.tracks[item].name}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="right">
+    <image class="img" src="{{rankingList.coverImgUrl}}" mode="widthFix" />
+    <view class="count">{{format.formatCount(rankingList.playCount)}}</view>
+  </view>
+</view>
