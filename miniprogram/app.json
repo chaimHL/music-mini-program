@@ -4,7 +4,8 @@
     "pages/tabbar-video/tabbar-video",
     "pages/video-detail/video-detail",
     "pages/search/search",
-    "pages/songs-list/songs-list"
+    "pages/songs-list/songs-list",
+    "pages/more-songs/more-songs"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

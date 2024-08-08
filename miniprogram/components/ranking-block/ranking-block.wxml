@@ -1,6 +1,6 @@
 <!--components/ranking-block/ranking-block.wxml-->
 <wxs module="format" src="/utils/format.wxs"></wxs>
-<view class="wrap">
+<view class="wrap" bind:tap="onTapRanking">
   <view class="left">
     <view class="name">{{rankingList.name}}</view>
     <block wx:for="{{3}}" wx:key="*this">
