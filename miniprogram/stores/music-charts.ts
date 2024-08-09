@@ -1,16 +1,16 @@
 import { observable, action } from 'mobx-miniprogram'
 
 export const musicChartsStore = observable({
-  newSongList: [] as any[],
-  originalSongList: [] as any[],
-  soaringSongList: [] as any[],
-  newSong: action(function (this: any, list: any[]) {
-    this.newSongList = list
+  newSongList: {},
+  originalSongList: {},
+  soaringSongList: {},
+  newSong: action(function (this: any, obj: any) {
+    this.newSongList = obj || {}
   }),
-  originalSong: action(function (this: any, list: any[]) {
-    this.originalSongList = list
+  originalSong: action(function (this: any, obj: any) {
+    this.originalSongList = obj || {}
   }),
-  soaringSong: action(function (this: any, list: any[]) {
-    this.soaringSongList = list
+  soaringSong: action(function (this: any, obj: any) {
+    this.soaringSongList = obj || {}
   }),
 })

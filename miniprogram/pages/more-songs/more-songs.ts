@@ -1,6 +1,7 @@
 // pages/recommended-songs/recommended-songs.ts
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { musicChartsStore } from '../../stores/music-charts'
+import { recommendedSongsStore } from '../../stores/recommended-songs'
 
 Page({
   data: {
@@ -30,12 +31,29 @@ Page({
         },
         actions: []
       })
+    } else if (type === 'recommended') {
+      // 绑定 推荐歌曲 store
+      this.recommendedSongsStoreBindings = createStoreBindings(this, {
+        store: recommendedSongsStore,
+        fields: {
+          songsData: 'playlist'
+        },
+        actions: []
+      })
     }
+  },
+  onReady(this: any) {
+    wx.setNavigationBarTitle({
+      title: this.data.songsData.name
+    })
   },
   onUnload(this: any) {
     if (this.data.type === 'ranking') {
       // 解绑 巅峰榜 store
       this.musicChartsStoreBindings.destroyStoreBindings()
+    } else if (this.data.type === 'recommended') {
+      // 解绑 推荐歌曲 store
+      this.recommendedSongsStoreBindings.destroyStoreBindings()
     }
   },
 })

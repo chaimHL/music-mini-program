@@ -2,6 +2,6 @@
 <view class="title">{{songsData.name}}</view>
 <view>
   <block wx:for="{{songsData.tracks}}" wx:key="id">
-    <view>{{item.name}}</view>
+    <more-songs-item itemData="{{item}}" index="{{index+1}}" />
   </block>
 </view>

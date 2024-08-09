@@ -1,10 +1,7 @@
 // components/ranking-block/ranking-block.ts
 Component({
   properties: {
-    rankingList: {
-      type: Object,
-      value: {}
-    }
+    rankingList: null
   },
   methods: {
     // 点击了巅峰榜

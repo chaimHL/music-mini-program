@@ -78,6 +78,12 @@ Page({
       swipterHeight: res[0].height || 150
     })
   },
+  // 点击了推荐歌曲的更多
+  onTapMoreRec() {
+    wx.navigateTo({
+      url: '/pages/more-songs/more-songs?type=recommended'
+    })
+  },
   // 点击了热门歌单的更多
   onTapMorePop() {
     wx.navigateTo({
@@ -86,8 +92,8 @@ Page({
   },
   async getPlayList(this: any) {
     const res = await playlist.detail(3778678)
-    const arr = res.playlist.tracks
-    this.setPlayList(arr || [])
+    const obj = res.playlist
+    this.setPlayList(obj || {})
   },
   async getPopPlaylist() {
     const res = await playlist.topList()
@@ -105,7 +111,7 @@ Page({
     for (const key in ids) {
       const id = ids[key]
       playlist.detail(id).then(res => {
-        this[key](res.playlist || [])
+        this[key](res.playlist || {})
       })
     }
   }

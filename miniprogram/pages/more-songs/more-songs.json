@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "more-songs-item": "/components/more-songs-item/more-songs-item"
+  }
 }
