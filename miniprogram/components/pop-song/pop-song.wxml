@@ -1,6 +1,6 @@
 <!--components/pop-song/pop-song.wxml-->
 <wxs module="format" src="/utils/format.wxs"></wxs>
-<view>
+<view bind:tap="onTapPopSong">
   <view class="top">
     <image class="img" src="{{songData.coverImgUrl}}" mode="widthFix" />
     <view class="count">{{format.formatCount(songData.playCount)}}</view>

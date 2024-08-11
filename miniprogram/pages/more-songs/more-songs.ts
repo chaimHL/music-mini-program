@@ -2,13 +2,14 @@
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { musicChartsStore } from '../../stores/music-charts'
 import { recommendedSongsStore } from '../../stores/recommended-songs'
+import playlist from '../../services/requsets/playlist'
 
 Page({
   data: {
     type: '' // 推荐歌曲或巅峰榜：ranking
   },
   onLoad(this: any, options: any) {
-    const { type, toplistType } = options
+    const { type, toplistType, id } = options
     this.data.type = type
     let field = ''
     if (type === 'ranking') {
@@ -40,6 +41,8 @@ Page({
         },
         actions: []
       })
+    } else if (type === 'pop') {
+      this.getPopSongs(id)
     }
   },
   onReady(this: any) {
@@ -56,4 +59,11 @@ Page({
       this.recommendedSongsStoreBindings.destroyStoreBindings()
     }
   },
+  // 获取热门歌单
+  async getPopSongs(id: string) {
+    const res = await playlist.detail(Number(id))
+    this.setData({
+      songsData: res.playlist || {}
+    })
+  }
 })
