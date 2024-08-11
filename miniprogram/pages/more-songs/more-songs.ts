@@ -10,7 +10,9 @@ Page({
   },
   onLoad(this: any, options: any) {
     const { type, toplistType, id } = options
-    this.data.type = type
+    this.setData({
+      type
+    })
     let field = ''
     if (type === 'ranking') {
       switch (toplistType) {
@@ -47,7 +49,7 @@ Page({
   },
   onReady(this: any) {
     wx.setNavigationBarTitle({
-      title: this.data.songsData.name
+      title: this.data.songsData?.name || ''
     })
   },
   onUnload(this: any) {

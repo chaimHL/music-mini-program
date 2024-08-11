@@ -1,4 +1,3 @@
-import { ColorGradient } from "XrFrame/components/particle/gradient"
 import { topMv } from "../../services/requsets/mv"
 
 // pages/tabbar-video/tabbar-video.ts

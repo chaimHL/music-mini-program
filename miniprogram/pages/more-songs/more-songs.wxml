@@ -1,5 +1,8 @@
 <!--pages/recommended-songs/recommended-songs.wxml-->
-<view class="title">{{songsData.name}}</view>
+<view wx:if="{{type==='pop'}}">
+  <pop-song-header songsData="{{songsData}}" />
+</view>
+<view wx:else class="title">{{songsData.name}}</view>
 <view>
   <block wx:for="{{songsData.tracks}}" wx:key="id">
     <more-songs-item itemData="{{item}}" index="{{index+1}}" />

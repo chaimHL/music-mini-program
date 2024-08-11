@@ -1,0 +1,25 @@
+<!--components/pop-song-header/pop-song-header.wxml-->
+<wxs src="/utils/format.wxs" module="format"></wxs>
+<view wx:if="{{songsData.coverImgUrl}}" class="header">
+  <!-- 背景 -->
+  <view>
+    <image class="bg-img" src="{{songsData.coverImgUrl}}" mode="widthFix" />
+    <view class="bg-cover"></view>
+  </view>
+  <!-- 内容 -->
+  <view class="content">
+    <image class="img" src="{{songsData.coverImgUrl}}" mode="widthFix" />
+    <view class="name">{{songsData.name}}</view>
+  </view>
+  <!-- 操作 -->
+  <view class="action">
+    <view class="item">
+      <image class="icon" src="/assets/icons/favor.png" mode="widthFix" />
+      <text class="text">{{format.formatCount(songsData.subscribedCount)}}</text>
+    </view>
+    <view class="item">
+      <image class="icon" src="/assets/icons/share.png" mode="widthFix" />
+      <text class="text">分享</text>
+    </view>
+  </view>
+</view>
