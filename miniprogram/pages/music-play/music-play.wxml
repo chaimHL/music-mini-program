@@ -1,0 +1,4 @@
+<!--pages/music-play/music-play.wxml-->
+<view>{{songData.name}}</view>
+<image src="{{songData.al.picUrl}}" mode="widthFix" />
+<view>{{lrc}}</view>

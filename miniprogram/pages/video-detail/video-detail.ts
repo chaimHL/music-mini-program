@@ -6,7 +6,7 @@ Page({
     videoUrl: '',
     detail: {}
   },
-  onLoad(options) {
+  onLoad(options: any) {
     const { id } = options
     if (id) {
       this.getMvUrl(id)

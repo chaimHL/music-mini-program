@@ -5,7 +5,8 @@
     "pages/video-detail/video-detail",
     "pages/search/search",
     "pages/songs-list/songs-list",
-    "pages/more-songs/more-songs"
+    "pages/more-songs/more-songs",
+    "pages/music-play/music-play"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

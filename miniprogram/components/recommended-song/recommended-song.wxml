@@ -1,5 +1,5 @@
 <!--components/recommended-song/recommended-song.wxml-->
-<view class="wrap">
+<view class="wrap" bind:tap="onTapSong">
   <image class="image" src="{{songData.al.picUrl}}" mode="widthFix" />
   <view class="des">
     <view class="top">{{songData.name}}</view>
