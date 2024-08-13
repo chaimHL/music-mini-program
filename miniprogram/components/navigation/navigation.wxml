@@ -1,0 +1,11 @@
+<!--components/navigation/navigation.wxml-->
+<view>
+  <!-- 顶部状态栏 -->
+  <view style="height: {{statusBarHeight}}px;"></view>
+  <!-- 导航栏 -->
+  <view class="navi-bar">
+    <view class="left">返回</view>
+    <view class="center">111</view>
+    <view class="right"></view>
+  </view>
+</view>

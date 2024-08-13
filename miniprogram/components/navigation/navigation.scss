@@ -1,0 +1,22 @@
+/* components/navigation/navigation.wxss */
+.navi-bar {
+  display: flex;
+  color: #ffffff;
+  height: 44px; // 固定数值
+  align-items: center;
+
+  .center {
+    flex-grow: 1;
+  }
+
+  .left,
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .left,
+  .right {
+    width: 120rpx;
+  }
+}
