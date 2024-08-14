@@ -19,4 +19,12 @@
   .right {
     width: 120rpx;
   }
+
+  .default {
+    display: none;
+  }
+
+  .slot:empty+.default {
+    display: block;
+  }
 }

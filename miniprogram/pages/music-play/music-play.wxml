@@ -1,4 +1,18 @@
 <!--pages/music-play/music-play.wxml-->
 <image class="bg-img" src="{{songData.al.picUrl}}" mode="aspectFill" />
 <view class="bg-cover"></view>
-<navigation />
+<navigation>
+  <view class="title">
+    <view class="{{current === 0 ? 'active' : ''}}">歌曲</view>
+    <view class="line">|</view>
+    <view class="{{current === 1 ? 'active' : ''}}">歌词</view>
+  </view>
+</navigation>
+<swiper bindchange="onSwiperChange" style="height: {{contentHeight}}px;">
+  <swiper-item>
+    1
+  </swiper-item>
+  <swiper-item>
+    2
+  </swiper-item>
+</swiper>
