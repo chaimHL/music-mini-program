@@ -1,0 +1,27 @@
+<!--pages/music-play/components/music/music.wxml-->
+<view class="wrap">
+  <view class="img-box">
+    <image class="img" src="{{songData.al.picUrl}}" mode="widthFix" />
+  </view>
+  <view class="song-msg">
+    <view class="song-name">{{songData.name}}</view>
+    <view>{{songData.ar[0].name}}</view>
+  </view>
+  <view class="lyric">
+    啦啦啦啦啦啦
+  </view>
+  <view class="progress">
+    <slider block-size="12" />
+    <view class="time">
+      <view class="current">01:41</view>
+      <view class="duration">03:55</view>
+    </view>
+  </view>
+  <view class="control">
+    <image class="img" src="/assets/imgs/player/play_order.png" mode="widthFix" />
+    <image class="img" src="/assets/imgs/player/play_prev.png" mode="widthFix" />
+    <image class="img play" src="/assets/imgs/player/play_pause.png" mode="widthFix" />
+    <image class="img" src="/assets/imgs/player/play_next.png" mode="widthFix" />
+    <image class="img" src="/assets/imgs/player/play_music.png" mode="widthFix" />
+  </view>
+</view>

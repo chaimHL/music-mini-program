@@ -31,7 +31,7 @@
 
 <view class="mt-40">
   <section-title title="巅峰榜" showMore="{{false}}" />
-  <ranking-block rankingList="{{newSongList}}" />
-  <ranking-block rankingList="{{originalSongList}}" />
-  <ranking-block rankingList="{{soaringSongList}}" />
+  <ranking-block wx:if="{{newSongList.coverImgUrl}}" rankingList="{{newSongList}}" />
+  <ranking-block wx:if="{{originalSongList.coverImgUrl}}" rankingList="{{originalSongList}}" />
+  <ranking-block wx:if="{{soaringSongList.coverImgUrl}}" rankingList="{{soaringSongList}}" />
 </view>
