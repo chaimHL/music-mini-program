@@ -3,12 +3,15 @@
 <view class="bg-cover"></view>
 <navigation>
   <view class="title">
-    <view class="{{current === 0 ? 'active' : ''}}">歌曲</view>
-    <view class="line">|</view>
-    <view class="{{current === 1 ? 'active' : ''}}">歌词</view>
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view class="{{current === index ? 'active' : ''}}" bind:tap="onTapTab" data-index="{{index}}">
+        {{item}}
+      </view>
+      <view wx:if="{{index !== tabs.length - 1}}" class="line">|</view>
+    </block>
   </view>
 </navigation>
-<swiper bindchange="onSwiperChange" style="height: {{contentHeight}}px;">
+<swiper current="{{current}}" bindchange="onSwiperChange" style="height: {{contentHeight}}px;">
   <swiper-item>
     1
   </swiper-item>

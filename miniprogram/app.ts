@@ -5,8 +5,7 @@ App<IAppOption>({
   },
   onLaunch() {
     const windowInfo = wx.getWindowInfo()
-    console.log(windowInfo);
-
+    // console.log(windowInfo);
     this.globalData.windowInfo = windowInfo
   }
 })

@@ -3,6 +3,7 @@ import song from '../../services/requsets/song'
 const app = getApp()
 Page({
   data: {
+    tabs: ['歌曲', '歌词'],
     songData: {},
     lrc: '',
     current: 0, // 当前激活的 swiperItem
@@ -26,6 +27,12 @@ Page({
       this.setData({
         lrc: res.lrc.lyric
       })
+    })
+  },
+  // 点击 tab 进行切换
+  onTapTab(event: WechatMiniprogram.BaseEvent) {
+    this.setData({
+      current: event.currentTarget.dataset.index
     })
   },
   onSwiperChange(event: WechatMiniprogram.SwiperChange) {
