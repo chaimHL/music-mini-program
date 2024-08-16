@@ -1,7 +1,7 @@
 <!--pages/tabbar-music/tabbar-music.wxml-->
 <van-search shape="round" background="#fbfbfb" placeholder="请输入搜索关键词" bind:click-input="onTapSearch" />
 
-<swiper class="swiper" circular indicator-dots style="height: {{swipterHeight}}px;">
+<swiper wx:if="{{banners.length}}" class="swiper" circular indicator-dots style="height: {{swipterHeight}}px;">
   <block wx:for="{{banners}}" wx:key="bannerId">
     <swiper-item>
       <image class="img" src="{{item.pic}}" mode="widthFix" bindload="onBannerLoad" />
@@ -9,14 +9,16 @@
   </block>
 </swiper>
 
-<view wx:if="{{theFirst6Songs.length}}">
-  <section-title title="推荐歌曲" bind:tapMore="onTapMoreRec" />
+<van-skeleton title row="6" loading="{{!theFirst6Songs.length}}" class="mt-20">
   <view>
-    <block wx:for="{{theFirst6Songs}}" wx:key="id">
-      <recommended-song songData="{{item}}" />
-    </block>
+    <section-title title="推荐歌曲" bind:tapMore="onTapMoreRec" />
+    <view>
+      <block wx:for="{{theFirst6Songs}}" wx:key="id">
+        <recommended-song songData="{{item}}" />
+      </block>
+    </view>
   </view>
-</view>
+</van-skeleton>
 
 <view class="mt-40">
   <section-title title="热门歌单" bind:tapMore="onTapMorePop" />

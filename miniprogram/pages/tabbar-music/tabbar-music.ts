@@ -16,7 +16,7 @@ const throttled = throttle(getSelectorRect, 100, { trailing: false })
 Page({
   data: {
     banners: [] as any[],
-    swipterHeight: 150,
+    swipterHeight: 130,
     popPlaylist: [], // 热门歌单
     screenWidth: 375
   },
