@@ -1,6 +1,8 @@
 // pages/music-play/music-play.ts
 import song from '../../services/requsets/song'
 const app = getApp()
+// 创建播放器
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
   data: {
     tabs: ['歌曲', '歌词'],
@@ -28,6 +30,9 @@ Page({
         lrc: res.lrc.lyric
       })
     })
+    // 播放歌曲
+    innerAudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
+    innerAudioContext.autoplay = true
   },
   // 点击 tab 进行切换
   onTapTab(event: WechatMiniprogram.BaseEvent) {
