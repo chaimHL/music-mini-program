@@ -9,7 +9,8 @@ Page({
     songData: {},
     lrc: '',
     current: 0, // 当前激活的 swiperItem
-    contentHeight: 667 // 内容区域高度
+    contentHeight: 667, // 内容区域高度
+    controlData: {} as any // 播放滑块数据
   },
   onLoad(options: any) {
     // 计算内容区域高度
@@ -21,7 +22,8 @@ Page({
     // 获取歌曲详情
     song.detail(id).then(res => {
       this.setData({
-        songData: res.songs[0]
+        songData: res.songs[0],
+        controlData: { ...this.data.controlData, durationTime: res.songs[0].dt }
       })
     })
     // 获取歌词
@@ -33,6 +35,16 @@ Page({
     // 播放歌曲
     innerAudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
     innerAudioContext.autoplay = true
+    // 播放时间
+    innerAudioContext.onTimeUpdate(() => {
+      this.setData({
+        controlData: { ...this.data.controlData, currentTime: innerAudioContext.currentTime * 1000 }
+      })
+      const progressValue = this.data.controlData.currentTime * 100 / this.data.controlData.durationTime
+      this.setData({
+        controlData: { ...this.data.controlData, progressValue }
+      })
+    })
   },
   // 点击 tab 进行切换
   onTapTab(event: WechatMiniprogram.BaseEvent) {

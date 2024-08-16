@@ -9,7 +9,7 @@
   </block>
 </swiper>
 
-<van-skeleton title row="6" loading="{{!theFirst6Songs.length}}" class="mt-20">
+<van-skeleton title row="6" loading="{{!theFirst6Songs.length}}" class="mt-40">
   <view>
     <section-title title="推荐歌曲" bind:tapMore="onTapMoreRec" />
     <view>

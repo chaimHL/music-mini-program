@@ -5,6 +5,10 @@ Component({
     songData: {
       type: Object,
       value: {}
+    },
+    controlData: {
+      type: Object,
+      value: {}
     }
   }
 })
