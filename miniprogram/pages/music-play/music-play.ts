@@ -35,7 +35,7 @@ Page({
     // 播放歌曲
     innerAudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
     innerAudioContext.autoplay = true
-    // 播放时间
+    // 获取播放时间
     innerAudioContext.onTimeUpdate(() => {
       this.setData({
         controlData: { ...this.data.controlData, currentTime: innerAudioContext.currentTime * 1000 }
@@ -44,6 +44,13 @@ Page({
       this.setData({
         controlData: { ...this.data.controlData, progressValue }
       })
+    })
+    // 解决点击滑块后因为onTimeUpdate停止监听导致的滑块与播放时间停止更新的问题
+    innerAudioContext.onWaiting(() => {
+      innerAudioContext.pause()
+    })
+    innerAudioContext.onCanplay(() => {
+      innerAudioContext.play()
     })
   },
   // 点击 tab 进行切换
@@ -56,5 +63,13 @@ Page({
     this.setData({
       current: event.detail.current
     })
+  },
+  // 滑块被点击
+  onSliderChange(event: WechatMiniprogram.CustomEvent) {
+    const { value } = event.detail
+    const currentTime = value / 100 * this.data.controlData.durationTime
+    const position = Number((currentTime / 1000).toFixed(3))
+    // 设置播放器
+    innerAudioContext.seek(position)
   }
 })

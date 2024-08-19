@@ -12,7 +12,7 @@
     啦啦啦啦啦啦
   </view>
   <view class="progress">
-    <slider block-size="12" value="{{controlData.progressValue}}" />
+    <slider block-size="12" value="{{controlData.progressValue}}" bindchange="onSliderChange" />
     <view class="time">
       <view class="current">{{format.formatTime(controlData.currentTime)}}</view>
       <view class="duration">{{format.formatTime(controlData.durationTime)}}</view>

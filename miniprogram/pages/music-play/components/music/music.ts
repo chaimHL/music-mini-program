@@ -10,5 +10,12 @@ Component({
       type: Object,
       value: {}
     }
+  },
+  methods: {
+    onSliderChange(event: WechatMiniprogram.SliderChange) {
+      // 获取滑块相对位置
+      const value = event.detail.value
+      this.triggerEvent('sliderChange', { value })
+    }
   }
 })
