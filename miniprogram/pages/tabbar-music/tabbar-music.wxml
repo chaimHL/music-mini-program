@@ -9,7 +9,7 @@
   </block>
 </swiper>
 
-<van-skeleton title row="6" loading="{{!theFirst6Songs.length}}" class="mt-40">
+<van-skeleton title row="6" loading="{{!theFirst6Songs.length}}" custom-class="mt-40">
   <view>
     <section-title title="推荐歌曲" bind:tapMore="onTapMoreRec" />
     <view>
@@ -20,20 +20,24 @@
   </view>
 </van-skeleton>
 
-<view class="mt-40">
-  <section-title title="热门歌单" bind:tapMore="onTapMorePop" />
-  <scroll-view class="pop-playlist" scroll-x style="width: {{screenWidth}}px;">
-    <block wx:for="{{popPlaylist}}" wx:key="id">
-      <view class="pop-item">
-        <pop-song songData="{{item}}" />
-      </view>
-    </block>
-  </scroll-view>
-</view>
+<van-skeleton title row="3" loading="{{!popPlaylist.length}}" custom-class="mt-40">
+  <view class="mt-40">
+    <section-title title="热门歌单" bind:tapMore="onTapMorePop" />
+    <scroll-view class="pop-playlist" scroll-x style="width: {{screenWidth}}px;">
+      <block wx:for="{{popPlaylist}}" wx:key="id">
+        <view class="pop-item">
+          <pop-song songData="{{item}}" />
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</van-skeleton>
 
-<view wx:if="{{newSongList.coverImgUrl}}" class="mt-40">
-  <section-title title="巅峰榜" showMore="{{false}}" />
-  <ranking-block wx:if="{{newSongList.coverImgUrl}}" rankingList="{{newSongList}}" />
-  <ranking-block wx:if="{{originalSongList.coverImgUrl}}" rankingList="{{originalSongList}}" />
-  <ranking-block wx:if="{{soaringSongList.coverImgUrl}}" rankingList="{{soaringSongList}}" />
-</view>
+<van-skeleton title row="3" loading="{{!newSongList.coverImgUrl}}" custom-class="mt-40">
+  <view class="mt-40">
+    <section-title title="巅峰榜" showMore="{{false}}" />
+    <ranking-block wx:if="{{newSongList.coverImgUrl}}" rankingList="{{newSongList}}" />
+    <ranking-block wx:if="{{originalSongList.coverImgUrl}}" rankingList="{{originalSongList}}" />
+    <ranking-block wx:if="{{soaringSongList.coverImgUrl}}" rankingList="{{soaringSongList}}" />
+  </view>
+</van-skeleton>
