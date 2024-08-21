@@ -9,6 +9,10 @@ Component({
     controlData: {
       type: Object,
       value: {}
+    },
+    isPaused: {
+      type: Boolean,
+      value: false
     }
   },
   methods: {
@@ -22,6 +26,10 @@ Component({
     onSliderChanging(event: WechatMiniprogram.SliderChange) {
       const value = event.detail.value
       this.triggerEvent('sliderChanging', { value })
+    },
+    // 点击播放或暂停按钮
+    onTapPlayOrPause() {
+      this.triggerEvent('playOrPause')
     }
   }
 })
