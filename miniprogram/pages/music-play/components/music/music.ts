@@ -13,6 +13,10 @@ Component({
     isPaused: {
       type: Boolean,
       value: false
+    },
+    currentLrc: {
+      type: String,
+      value: ''
     }
   },
   methods: {

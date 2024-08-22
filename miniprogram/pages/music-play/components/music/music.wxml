@@ -9,7 +9,7 @@
     <view>{{songData.ar[0].name}}</view>
   </view>
   <view class="lyric">
-    啦啦啦啦啦啦
+    {{currentLrc}}
   </view>
   <view class="progress">
     <slider block-size="12" value="{{controlData.progressValue}}" bindchange="onSliderChange" bindchanging="onSliderChanging" />

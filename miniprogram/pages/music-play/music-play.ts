@@ -15,7 +15,9 @@ Page({
     contentHeight: 667, // 内容区域高度
     controlData: {} as any, // 播放滑块数据
     isSliderChanging: false, // 记录是否正在拖动滑块
-    isPaused: false // 是否暂停状态
+    isPaused: false, // 是否暂停状态
+    currentLrc: '', // 当前歌词
+    currentLrcIndex: -1
   },
   onLoad(options: any) {
     // 计算内容区域高度
@@ -34,8 +36,6 @@ Page({
     // 获取歌词
     song.lyric(id).then(res => {
       const lrc = formatLyric(res.lrc.lyric)
-      console.log(lrc);
-
       this.setData({
         lrc
       })
@@ -44,12 +44,29 @@ Page({
     innerAudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
     innerAudioContext.autoplay = true
 
-    const throttled = throttle(this.handleAudioContextTimeUpdate, 1000, { trailing: false })
-    // 获取播放时间
+    const throttled = throttle(this.handleAudioContextTimeUpdate, 1000)
+    // 监听播放
     innerAudioContext.onTimeUpdate(() => {
+      // 获取播放时间
       if (!this.data.isSliderChanging) {
         throttled()
       }
+      // 匹配歌词
+      if (!this.data.lrc.length) return
+      let lrcIndex = this.data.lrc.length - 1
+      for (let index = 0; index < this.data.lrc.length; index++) {
+        const element = this.data.lrc[index]
+        // element.time 单位为 ms; innerAudioContext.currentTime 单位为 s
+        if (element.time > innerAudioContext.currentTime * 1000) {
+          lrcIndex = index - 1
+          break
+        }
+      }
+      if (this.data.currentLrcIndex === lrcIndex) return
+      this.setData({
+        currentLrc: this.data.lrc[lrcIndex].text,
+        currentLrcIndex: lrcIndex
+      })
     })
     // 解决点击滑块后因为onTimeUpdate停止监听导致的滑块与播放时间停止更新的问题
     innerAudioContext.onWaiting(() => {
