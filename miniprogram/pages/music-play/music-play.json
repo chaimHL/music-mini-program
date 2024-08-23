@@ -3,6 +3,7 @@
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "navigation": "/components/navigation/navigation",
-    "music": "./components/music/music"
+    "music": "./components/music/music",
+    "lyric": "./components/lyric/lyric"
   }
 }

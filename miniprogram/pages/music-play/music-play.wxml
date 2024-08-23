@@ -16,6 +16,6 @@
     <music songData="{{songData}}" controlData="{{controlData}}" isPaused="{{isPaused}}" currentLrc="{{currentLrc}}" bind:sliderChange="onSliderChange" bind:sliderChanging="onSliderChanging" bind:playOrPause="onTapPlayOrPause" />
   </swiper-item>
   <swiper-item>
-    2
+    <lyric lrc="{{lrc}}" />
   </swiper-item>
 </swiper>

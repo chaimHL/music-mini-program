@@ -1,0 +1,12 @@
+/* pages/music-play/components/lyric.wxss */
+.lrc-wrap {
+  height: 100%;
+  color: #aaa;
+  text-align: center;
+  font-size: 28rpx;
+  padding: 40rpx;
+
+  .scroll {
+    height: 100%;
+  }
+}

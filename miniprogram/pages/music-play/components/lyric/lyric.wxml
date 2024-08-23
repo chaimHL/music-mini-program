@@ -1,0 +1,10 @@
+<!--pages/music-play/components/lyric.wxml-->
+<view class="lrc-wrap">
+  <scroll-view class="scroll" scroll-y>
+    <block wx:for="{{lrc}}" wx:key="time">
+      <view>
+        {{item.text}}
+      </view>
+    </block>
+  </scroll-view>
+</view>
