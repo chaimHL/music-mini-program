@@ -15,6 +15,7 @@ Page({
     contentHeight: 667, // 内容区域高度
     controlData: {} as any, // 播放滑块数据
     isSliderChanging: false, // 记录是否正在拖动滑块
+    isSliderChange: false, // 记录是否正在点击滑块
     isPaused: false, // 是否暂停状态
     currentLrc: '', // 当前歌词
     currentLrcIndex: -1
@@ -78,13 +79,19 @@ Page({
   },
 
   handleAudioContextTimeUpdate() {
+    // 解决点击滑块，滑块有时会跳动的问题
+    const currentTime = this.data.isSliderChange ? this.data.controlData.currentTime : innerAudioContext.currentTime * 1000
     this.setData({
-      controlData: { ...this.data.controlData, currentTime: innerAudioContext.currentTime * 1000 }
+      controlData: { ...this.data.controlData, currentTime }
     })
     const progressValue = this.data.controlData.currentTime * 100 / this.data.controlData.durationTime
+    console.log(progressValue);
+
     this.setData({
       controlData: { ...this.data.controlData, progressValue }
     })
+
+    this.data.isSliderChange = false
   },
   // 点击 tab 进行切换
   onTapTab(event: WechatMiniprogram.BaseEvent) {
@@ -99,11 +106,22 @@ Page({
   },
   // 滑块被点击，或者拖动完成后
   onSliderChange(event: WechatMiniprogram.CustomEvent) {
+    console.log('==========');
+    this.data.isSliderChange = true
     const { value } = event.detail
     const currentTime = value / 100 * this.data.controlData.durationTime
+    this.setData({
+      controlData: { ...this.data.controlData, currentTime }
+    })
     const position = Number((currentTime / 1000).toFixed(3))
     // 设置播放器
+    // 跳转到指定位置, position单位 s。精确到小数点后 3 位
     innerAudioContext.seek(position)
+    // 更新 progressValue，防止滑块来回跳动
+    const progressValue = currentTime * 100 / this.data.controlData.durationTime
+    this.setData({
+      controlData: { ...this.data.controlData, progressValue }
+    })
     this.data.isSliderChanging = false
   },
   // 拖动过程中触发的事件
