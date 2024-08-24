@@ -6,7 +6,18 @@
   font-size: 28rpx;
   padding: 40rpx;
 
+
+
   .scroll {
     height: 100%;
+
+    // 隐藏滚动条，注意空格
+    & ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .item:first-child {
+      margin-top: 30vh;
+    }
   }
 }

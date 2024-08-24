@@ -2,9 +2,9 @@
 <view class="lrc-wrap">
   <scroll-view class="scroll" scroll-y>
     <block wx:for="{{lrc}}" wx:key="time">
-      <view>
+      <view class="item">
         {{item.text}}
       </view>
     </block>
   </scroll-view>
-</view>
+</view>d
