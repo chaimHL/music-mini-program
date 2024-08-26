@@ -18,7 +18,7 @@ Page({
     isSliderChange: false, // 记录是否正在点击滑块
     isPaused: false, // 是否暂停状态
     currentLrc: '', // 当前歌词
-    currentLrcIndex: -1
+    currentLrcIndex: -1 // 当前歌词索引
   },
   onLoad(options: any) {
     // 计算内容区域高度
@@ -66,7 +66,8 @@ Page({
       if (this.data.currentLrcIndex === lrcIndex) return
       this.setData({
         currentLrc: this.data.lrc[lrcIndex].text,
-        currentLrcIndex: lrcIndex
+        currentLrcIndex: lrcIndex,
+        scrollTop: lrcIndex * 30
       })
     })
     // 解决点击滑块后因为onTimeUpdate停止监听导致的滑块与播放时间停止更新的问题

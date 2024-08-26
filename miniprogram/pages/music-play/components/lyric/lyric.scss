@@ -16,8 +16,16 @@
       display: none;
     }
 
-    .item:first-child {
-      margin-top: 30vh;
+    .item {
+      line-height: 30px;
+
+      &.active {
+        color: #1aad19
+      }
+
+      &:first-child {
+        margin-top: 30vh;
+      }
     }
   }
 }

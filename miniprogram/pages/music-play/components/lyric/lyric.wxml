@@ -1,8 +1,8 @@
 <!--pages/music-play/components/lyric.wxml-->
 <view class="lrc-wrap">
-  <scroll-view class="scroll" scroll-y>
+  <scroll-view class="scroll" scroll-y scroll-top="{{scrollTop}}" scroll-with-animation>
     <block wx:for="{{lrc}}" wx:key="time">
-      <view class="item">
+      <view class="item {{currentLrcIndex === index ? 'active' : ''}}">
         {{item.text}}
       </view>
     </block>
