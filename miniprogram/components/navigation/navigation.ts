@@ -1,9 +1,6 @@
 // components/navigation/navigation.ts
 const app = getApp()
 Component({
-  properties: {
-
-  },
   data: {
     statusBarHeight: 20
   },
@@ -13,6 +10,11 @@ Component({
       this.setData({
         statusBarHeight
       })
+    }
+  },
+  methods: {
+    back() {
+      wx.navigateBack()
     }
   }
 })

@@ -9,5 +9,13 @@ Component({
       type: Number,
       value: 0
     }
+  },
+  methods: {
+    onTapSong() {
+      const id = this.properties.itemData.id
+      wx.navigateTo({
+        url: `/pages/music-play/music-play?id=${id}`
+      })
+    }
   }
 })

@@ -4,11 +4,13 @@ import { throttle } from 'underscore'
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { recommendedSongsStore } from '../../stores/recommended-songs'
 import { musicChartsStore } from '../../stores/music-charts'
+import { playListStore } from '../../stores/play-list'
 
 import { getSelectorRect } from '../../utils/index'
 
 import banner from '../../services/requsets/banner'
 import playlist from '../../services/requsets/playlist'
+
 
 const app = getApp()
 const throttled = throttle(getSelectorRect, 100, { trailing: false })
@@ -25,7 +27,8 @@ Page({
     this.getWindowInfo()
 
     this.getBanners()
-    // 绑定 MobX store
+    // 绑定 MobX store ==start==
+    // 推荐歌曲
     this.recommendedSongsStoreBindings = createStoreBindings(this, {
       store: recommendedSongsStore,
       fields: ['theFirst6Songs'],
@@ -38,6 +41,14 @@ Page({
       fields: ['newSongList', 'originalSongList', 'soaringSongList'],
       actions: ['newSong', 'originalSong', 'soaringSong']
     })
+
+    // 播放歌曲列表
+    this.playListBindings = createStoreBindings(this, {
+      store: playListStore,
+      fields: ['playMusicList'],
+      actions: ['setPlayMusicList']
+    })
+    // 绑定 MobX store ==end==
 
     // 获取推荐歌单
     this.getPlayList()
@@ -53,6 +64,7 @@ Page({
     // 解绑
     this.recommendedSongsStoreBindings.destroyStoreBindings()
     this.musicChartsStoreBindings.destroyStoreBindings()
+    this.playListBindings.destroyStoreBindings()
   },
 
   getWindowInfo() {
@@ -114,5 +126,10 @@ Page({
         this[key](res.playlist || {})
       })
     }
+  },
+
+  // 点击了推荐歌曲的某一首
+  onTapSong(this: any) {
+    this.setPlayMusicList(this.data.theFirst6Songs)
   }
 })

@@ -2,6 +2,7 @@
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { musicChartsStore } from '../../stores/music-charts'
 import { recommendedSongsStore } from '../../stores/recommended-songs'
+import { playListStore } from '../../stores/play-list'
 import playlist from '../../services/requsets/playlist'
 
 Page({
@@ -46,6 +47,13 @@ Page({
     } else if (type === 'pop') {
       this.getPopSongs(id)
     }
+    // 绑定播放列表 store
+    // 播放歌曲列表
+    this.playListBindings = createStoreBindings(this, {
+      store: playListStore,
+      fields: ['playMusicList'],
+      actions: ['setPlayMusicList']
+    })
   },
   onReady(this: any) {
     wx.setNavigationBarTitle({
@@ -60,6 +68,8 @@ Page({
       // 解绑 推荐歌曲 store
       this.recommendedSongsStoreBindings.destroyStoreBindings()
     }
+    // 解绑 播放列表 store
+    this.playListBindings.destroyStoreBindings()
   },
   // 获取热门歌单
   async getPopSongs(id: string) {
@@ -67,5 +77,10 @@ Page({
     this.setData({
       songsData: res.playlist || {}
     })
+  },
+
+  // 点击了某一首歌曲
+  onTapSong(this: any) {
+    this.setPlayMusicList(this.data.songsData.tracks)
   }
 })

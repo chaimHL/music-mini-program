@@ -1,5 +1,7 @@
 // pages/music-play/music-play.ts
 import { throttle } from 'underscore'
+import { createStoreBindings } from 'mobx-miniprogram-bindings'
+import { playListStore } from '../../stores/play-list'
 import song from '../../services/requsets/song'
 import { formatLyric } from '../../utils/index'
 
@@ -20,7 +22,13 @@ Page({
     currentLrc: '', // 当前歌词
     currentLrcIndex: -1 // 当前歌词索引
   },
-  onLoad(options: any) {
+  onLoad(this: any, options: any) {
+    // 绑定 MobX
+    this.playListBindings = createStoreBindings(this, {
+      store: playListStore,
+      fields: ['playMusicList'],
+      actions: ['setPlayMusicList']
+    })
     // 计算内容区域高度
     const { screenHeight, statusBarHeight } = app.globalData.windowInfo
     const contentHeight = screenHeight - statusBarHeight - 44
@@ -77,6 +85,11 @@ Page({
     innerAudioContext.onCanplay(() => {
       innerAudioContext.play()
     })
+  },
+
+  onUnload(this: any) {
+    // 解绑 播放列表 store
+    this.playListBindings.destroyStoreBindings()
   },
 
   handleAudioContextTimeUpdate() {

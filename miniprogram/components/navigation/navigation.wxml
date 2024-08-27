@@ -9,7 +9,7 @@
         <slot name="left"></slot>
       </view>
       <view class="default">
-        <van-icon name="arrow-left" />
+        <van-icon name="arrow-left" bind:tap="back" />
       </view>
     </view>
     <view class="center">

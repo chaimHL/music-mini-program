@@ -1,5 +1,5 @@
 <!--components/more-songs-item/more-songs-item.wxml-->
-<view class="wrap">
+<view class="wrap" bind:tap="onTapSong">
   <view>
     <text>{{index}}.</text>
     <text>{{itemData.name}}</text>

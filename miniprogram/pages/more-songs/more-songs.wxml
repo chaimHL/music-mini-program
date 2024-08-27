@@ -5,6 +5,6 @@
 <view wx:else class="title">{{songsData.name}}</view>
 <view>
   <block wx:for="{{songsData.tracks}}" wx:key="id">
-    <more-songs-item itemData="{{item}}" index="{{index+1}}" />
+    <more-songs-item itemData="{{item}}" index="{{index+1}}" bind:tap="onTapSong" />
   </block>
 </view>
