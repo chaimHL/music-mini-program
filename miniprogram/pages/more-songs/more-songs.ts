@@ -52,7 +52,7 @@ Page({
     this.playListBindings = createStoreBindings(this, {
       store: playListStore,
       fields: ['playMusicList'],
-      actions: ['setPlayMusicList']
+      actions: ['setPlayMusicList', 'setplayMusicIndex']
     })
   },
   onReady(this: any) {
@@ -80,7 +80,9 @@ Page({
   },
 
   // 点击了某一首歌曲
-  onTapSong(this: any) {
+  onTapSong(this: any, event: WechatMiniprogram.BaseEvent) {
     this.setPlayMusicList(this.data.songsData.tracks)
+    const { index } = event.currentTarget.dataset
+    this.setplayMusicIndex(index)
   }
 })

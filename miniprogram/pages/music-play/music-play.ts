@@ -26,8 +26,8 @@ Page({
     // 绑定 MobX
     this.playListBindings = createStoreBindings(this, {
       store: playListStore,
-      fields: ['playMusicList'],
-      actions: ['setPlayMusicList']
+      fields: ['playMusicList', 'playMusicIndex'],
+      actions: ['setPlayMusicList', 'setplayMusicIndex']
     })
     // 计算内容区域高度
     const { screenHeight, statusBarHeight } = app.globalData.windowInfo
@@ -99,7 +99,6 @@ Page({
       controlData: { ...this.data.controlData, currentTime }
     })
     const progressValue = this.data.controlData.currentTime * 100 / this.data.controlData.durationTime
-    console.log(progressValue);
 
     this.setData({
       controlData: { ...this.data.controlData, progressValue }
@@ -120,7 +119,6 @@ Page({
   },
   // 滑块被点击，或者拖动完成后
   onSliderChange(event: WechatMiniprogram.CustomEvent) {
-    console.log('==========');
     this.data.isSliderChange = true
     const { value } = event.detail
     const currentTime = value / 100 * this.data.controlData.durationTime
@@ -162,5 +160,15 @@ Page({
         isPaused: true
       })
     }
+  },
+  // 切换歌曲
+  onChangeMusic(this: any, event: WechatMiniprogram.CustomEvent) {
+    const { isNext } = event.detail
+    const length = this.data.playMusicList.length
+    let currentIndex = this.data.playMusicIndex
+    let newIndex = isNext ? ++currentIndex : --currentIndex
+    if (newIndex === - 1) newIndex = length - 1
+    if (newIndex === length) newIndex = 0
+    this.setplayMusicIndex(newIndex)
   }
 })

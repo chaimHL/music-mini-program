@@ -20,9 +20,9 @@
   </view>
   <view class="control">
     <image class="img" src="/assets/imgs/player/play_order.png" mode="widthFix" />
-    <image class="img" src="/assets/imgs/player/play_prev.png" mode="widthFix" />
+    <image class="img" src="/assets/imgs/player/play_prev.png" mode="widthFix" bind:tap="tapPrev" />
     <image class="img play" src="/assets/imgs/player/play_{{isPaused ? 'resume' : 'pause'}}.png" mode="widthFix" bind:tap="onTapPlayOrPause" />
-    <image class="img" src="/assets/imgs/player/play_next.png" mode="widthFix" />
+    <image class="img" src="/assets/imgs/player/play_next.png" mode="widthFix" bind:tap="tapNext" />
     <image class="img" src="/assets/imgs/player/play_music.png" mode="widthFix" />
   </view>
 </view>

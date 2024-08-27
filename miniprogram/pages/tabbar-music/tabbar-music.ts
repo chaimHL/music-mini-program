@@ -46,7 +46,7 @@ Page({
     this.playListBindings = createStoreBindings(this, {
       store: playListStore,
       fields: ['playMusicList'],
-      actions: ['setPlayMusicList']
+      actions: ['setPlayMusicList', 'setplayMusicIndex']
     })
     // 绑定 MobX store ==end==
 
@@ -129,7 +129,9 @@ Page({
   },
 
   // 点击了推荐歌曲的某一首
-  onTapSong(this: any) {
+  onTapSong(this: any, event: WechatMiniprogram.BaseEvent) {
+    const { index } = event.currentTarget.dataset
     this.setPlayMusicList(this.data.theFirst6Songs)
+    this.setplayMusicIndex(index)
   }
 })

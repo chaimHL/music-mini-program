@@ -34,6 +34,14 @@ Component({
     // 点击播放或暂停按钮
     onTapPlayOrPause() {
       this.triggerEvent('playOrPause')
+    },
+    // 点击了播放上一首
+    tapPrev() {
+      this.triggerEvent('changeMusic', { isNext: false })
+    },
+    // 点击了播放下一首
+    tapNext() {
+      this.triggerEvent('changeMusic', { isNext: true })
     }
   }
 })

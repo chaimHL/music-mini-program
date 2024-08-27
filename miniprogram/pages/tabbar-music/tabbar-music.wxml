@@ -14,7 +14,7 @@
     <section-title title="推荐歌曲" bind:tapMore="onTapMoreRec" />
     <view>
       <block wx:for="{{theFirst6Songs}}" wx:key="id">
-        <recommended-song songData="{{item}}" bind:tap="onTapSong" />
+        <recommended-song songData="{{item}}" data-index="{{index}}" bind:tap="onTapSong" />
       </block>
     </view>
   </view>
