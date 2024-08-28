@@ -20,7 +20,8 @@ Page({
     isSliderChange: false, // 记录是否正在点击滑块
     isPaused: false, // 是否暂停状态
     currentLrc: '', // 当前歌词
-    currentLrcIndex: -1 // 当前歌词索引
+    currentLrcIndex: -1, // 当前歌词索引
+    isFirstPlay: true
   },
   onLoad(this: any, options: any) {
     // 绑定 MobX
@@ -33,58 +34,8 @@ Page({
     const { screenHeight, statusBarHeight } = app.globalData.windowInfo
     const contentHeight = screenHeight - statusBarHeight - 44
     this.setData({ contentHeight })
-
     const { id } = options
-    // 获取歌曲详情
-    song.detail(id).then(res => {
-      this.setData({
-        songData: res.songs[0],
-        controlData: { ...this.data.controlData, durationTime: res.songs[0].dt }
-      })
-    })
-    // 获取歌词
-    song.lyric(id).then(res => {
-      const lrc = formatLyric(res.lrc.lyric)
-      this.setData({
-        lrc
-      })
-    })
-    // 播放歌曲
-    innerAudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
-    innerAudioContext.autoplay = true
-
-    const throttled = throttle(this.handleAudioContextTimeUpdate, 1000)
-    // 监听播放
-    innerAudioContext.onTimeUpdate(() => {
-      // 获取播放时间
-      if (!this.data.isSliderChanging) {
-        throttled()
-      }
-      // 匹配歌词
-      if (!this.data.lrc.length) return
-      let lrcIndex = this.data.lrc.length - 1
-      for (let index = 0; index < this.data.lrc.length; index++) {
-        const element = this.data.lrc[index]
-        // element.time 单位为 ms; innerAudioContext.currentTime 单位为 s
-        if (element.time > innerAudioContext.currentTime * 1000) {
-          lrcIndex = index - 1
-          break
-        }
-      }
-      if (this.data.currentLrcIndex === lrcIndex) return
-      this.setData({
-        currentLrc: this.data.lrc[lrcIndex].text,
-        currentLrcIndex: lrcIndex,
-        scrollTop: lrcIndex * 30
-      })
-    })
-    // 解决点击滑块后因为onTimeUpdate停止监听导致的滑块与播放时间停止更新的问题
-    innerAudioContext.onWaiting(() => {
-      innerAudioContext.pause()
-    })
-    innerAudioContext.onCanplay(() => {
-      innerAudioContext.play()
-    })
+    this.playMusic(id)
   },
 
   onUnload(this: any) {
@@ -164,11 +115,77 @@ Page({
   // 切换歌曲
   onChangeMusic(this: any, event: WechatMiniprogram.CustomEvent) {
     const { isNext } = event.detail
+    this.changeMusic(isNext)
+  },
+  changeMusic(this: any, isNext = true) {
     const length = this.data.playMusicList.length
     let currentIndex = this.data.playMusicIndex
     let newIndex = isNext ? ++currentIndex : --currentIndex
     if (newIndex === - 1) newIndex = length - 1
     if (newIndex === length) newIndex = 0
     this.setplayMusicIndex(newIndex)
+    const { id } = this.data.playMusicList[newIndex]
+    this.playMusic(id)
+  },
+
+  // 播放歌曲
+  playMusic(id: number) {
+    // 获取歌词
+    song.lyric(id).then(res => {
+      const lrc = formatLyric(res.lrc.lyric)
+      this.setData({
+        lrc
+      })
+    })
+    // 获取歌曲详情
+    song.detail(id).then(res => {
+      this.setData({
+        songData: res.songs[0],
+        controlData: { ...this.data.controlData, durationTime: res.songs[0].dt }
+      })
+    })
+    // 播放歌曲
+    innerAudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
+    innerAudioContext.autoplay = true
+
+    if (this.data.isFirstPlay) {
+      this.data.isFirstPlay = false
+      const throttled = throttle(this.handleAudioContextTimeUpdate, 1000)
+      // 监听播放
+      innerAudioContext.onTimeUpdate(() => {
+        // 获取播放时间
+        if (!this.data.isSliderChanging) {
+          throttled()
+        }
+        // 匹配歌词
+        if (!this.data.lrc.length) return
+        let lrcIndex = this.data.lrc.length - 1
+        for (let index = 0; index < this.data.lrc.length; index++) {
+          const element = this.data.lrc[index]
+          // element.time 单位为 ms; innerAudioContext.currentTime 单位为 s
+          if (element.time > innerAudioContext.currentTime * 1000) {
+            lrcIndex = index - 1
+            break
+          }
+        }
+        if (this.data.currentLrcIndex === lrcIndex) return
+        this.setData({
+          currentLrc: this.data.lrc[lrcIndex].text,
+          currentLrcIndex: lrcIndex,
+          scrollTop: lrcIndex * 30
+        })
+      })
+      // 解决点击滑块后因为onTimeUpdate停止监听导致的滑块与播放时间停止更新的问题
+      innerAudioContext.onWaiting(() => {
+        innerAudioContext.pause()
+      })
+      innerAudioContext.onCanplay(() => {
+        innerAudioContext.play()
+      })
+      // 监听播放结束
+      innerAudioContext.onEnded(() => {
+        this.changeMusic()
+      })
+    }
   }
 })
