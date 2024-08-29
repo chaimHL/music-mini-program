@@ -92,16 +92,19 @@ Page({
     this.data.isSliderChanging = false
   },
   // 拖动过程中触发的事件
-  onSliderChanging(event: WechatMiniprogram.CustomEvent) {
-    this.data.isSliderChanging = true
-    const { value } = event.detail
-    const currentTime = value / 100 * this.data.controlData.durationTime
-    const progressValue = currentTime * 100 / this.data.controlData.durationTime
-    const controlData = { ...this.data.controlData, currentTime, progressValue }
-    this.setData({
-      controlData
-    })
-  },
+  onSliderChanging: throttle(
+    function (this: any, event: WechatMiniprogram.CustomEvent) {
+      this.data.isSliderChanging = true
+      const { value } = event.detail
+      const currentTime = value / 100 * this.data.controlData.durationTime
+      const progressValue = currentTime * 100 / this.data.controlData.durationTime
+      const controlData = { ...this.data.controlData, currentTime, progressValue }
+      this.setData({
+        controlData
+      })
+    },
+    100
+  ),
   // 点击播放或暂停按钮
   onTapPlayOrPause() {
     if (innerAudioContext.paused) {
