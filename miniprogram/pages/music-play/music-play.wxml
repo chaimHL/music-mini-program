@@ -13,7 +13,7 @@
 </navigation>
 <swiper current="{{current}}" bindchange="onSwiperChange" style="height: {{contentHeight}}px;">
   <swiper-item>
-    <music songData="{{songData}}" controlData="{{controlData}}" isPaused="{{isPaused}}" currentLrc="{{currentLrc}}" bind:sliderChange="onSliderChange" bind:sliderChanging="onSliderChanging" bind:playOrPause="onTapPlayOrPause" bind:changeMusic="onChangeMusic" />
+    <music songData="{{songData}}" controlData="{{controlData}}" isPaused="{{isPaused}}" currentLrc="{{currentLrc}}" playMode="{{playMode}}" bind:sliderChange="onSliderChange" bind:sliderChanging="onSliderChanging" bind:playOrPause="onTapPlayOrPause" bind:changeMusic="onChangeMusic" bind:changePlayMode="onTapPlayMode" />
   </swiper-item>
   <swiper-item>
     <lyric lrc="{{lrc}}" currentLrcIndex="{{currentLrcIndex}}" scrollTop="{{scrollTop}}" />

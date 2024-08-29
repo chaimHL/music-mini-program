@@ -6,6 +6,8 @@ import song from '../../services/requsets/song'
 import { formatLyric } from '../../utils/index'
 
 const app = getApp()
+// 播放模式
+const playModeList = ['order', 'repeat', 'random']
 // 创建播放器
 const innerAudioContext = wx.createInnerAudioContext()
 Page({
@@ -21,7 +23,9 @@ Page({
     isPaused: false, // 是否暂停状态
     currentLrc: '', // 当前歌词
     currentLrcIndex: -1, // 当前歌词索引
-    isFirstPlay: true
+    isFirstPlay: true,
+    playModeIndex: 0, // 播放模式
+    playMode: 'order'
   },
   onLoad(this: any, options: any) {
     // 绑定 MobX
@@ -119,12 +123,23 @@ Page({
   },
   changeMusic(this: any, isNext = true) {
     const length = this.data.playMusicList.length
-    let currentIndex = this.data.playMusicIndex
-    let newIndex = isNext ? ++currentIndex : --currentIndex
-    if (newIndex === - 1) newIndex = length - 1
-    if (newIndex === length) newIndex = 0
-    this.setplayMusicIndex(newIndex)
-    const { id } = this.data.playMusicList[newIndex]
+    let index = this.data.playMusicIndex
+
+    switch (this.data.playModeIndex) {
+      case 0: // 顺序播放
+        index = isNext ? ++index : --index
+        if (index === - 1) index = length - 1
+        if (index === length) index = 0
+        break
+      case 1: // 单曲循环
+        break
+      case 2: // 随机播放
+        index = Math.floor(Math.random() * length)
+        break
+    }
+
+    this.setplayMusicIndex(index)
+    const { id } = this.data.playMusicList[index]
     this.playMusic(id)
   },
 
@@ -145,6 +160,7 @@ Page({
       })
     })
     // 播放歌曲
+    innerAudioContext.stop()
     innerAudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
     innerAudioContext.autoplay = true
 
@@ -187,5 +203,14 @@ Page({
         this.changeMusic()
       })
     }
+  },
+  // 点击了切换播放模式
+  onTapPlayMode() {
+    let index = ++this.data.playModeIndex
+    if (index === 3) index = 0
+    this.setData({
+      playModeIndex: index,
+      playMode: playModeList[index]
+    })
   }
 })

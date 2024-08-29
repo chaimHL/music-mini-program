@@ -17,6 +17,10 @@ Component({
     currentLrc: {
       type: String,
       value: ''
+    },
+    playMode: {
+      type: String,
+      value: 'order'
     }
   },
   methods: {
@@ -42,6 +46,10 @@ Component({
     // 点击了播放下一首
     tapNext() {
       this.triggerEvent('changeMusic', { isNext: true })
+    },
+    // 切换播放模式
+    tapPlayMode() {
+      this.triggerEvent('changePlayMode')
     }
   }
 })
