@@ -1,3 +1,4 @@
+// 歌曲排行
 import { observable, action } from 'mobx-miniprogram'
 
 export const musicChartsStore = observable({

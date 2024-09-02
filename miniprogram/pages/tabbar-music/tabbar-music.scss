@@ -30,3 +30,43 @@ page {
     }
   }
 }
+
+.play-bar-placeholder {
+  height: 120rpx;
+}
+
+.play-bar {
+  position: fixed;
+  height: 100rpx;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;
+  box-shadow: 0 -1px 5px rgba($color: #000000, $alpha: 0.1);
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    .cover {
+      width: 110rpx;
+      height: 110rpx;
+      border-radius: 55rpx;
+      margin-bottom: 40rpx;
+      margin-right: 10rpx;
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      width: 60rpx;
+    }
+  }
+}

@@ -2,6 +2,7 @@
 import { throttle } from 'underscore'
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { playListStore } from '../../stores/play-list'
+import { musicPlayStore } from '../../stores/music-play'
 import song from '../../services/requsets/song'
 import { formatLyric } from '../../utils/index'
 
@@ -17,7 +18,7 @@ Page({
     lrc: [] as any[],
     current: 0, // 当前激活的 swiperItem
     contentHeight: 667, // 内容区域高度
-    controlData: {} as any, // 播放滑块数据
+    controlData: {} as any, // 播放数据
     isSliderChanging: false, // 记录是否正在拖动滑块
     isSliderChange: false, // 记录是否正在点击滑块
     isPaused: false, // 是否暂停状态
@@ -34,6 +35,12 @@ Page({
       fields: ['playMusicList', 'playMusicIndex'],
       actions: ['setPlayMusicList', 'setplayMusicIndex']
     })
+    this.musicPlayBindings = createStoreBindings(this, {
+      store: musicPlayStore,
+      fields: [],
+      actions: ['setAlbumSrc', 'setMusicName']
+    })
+
     // 计算内容区域高度
     const { screenHeight, statusBarHeight } = app.globalData.windowInfo
     const contentHeight = screenHeight - statusBarHeight - 44
@@ -147,7 +154,7 @@ Page({
   },
 
   // 播放歌曲
-  playMusic(id: number) {
+  playMusic(this: any, id: number) {
     // 获取歌词
     song.lyric(id).then(res => {
       const lrc = formatLyric(res.lrc.lyric)
@@ -157,10 +164,13 @@ Page({
     })
     // 获取歌曲详情
     song.detail(id).then(res => {
+      const song = res.songs[0]
       this.setData({
-        songData: res.songs[0],
-        controlData: { ...this.data.controlData, durationTime: res.songs[0].dt }
+        songData: song,
+        controlData: { ...this.data.controlData, durationTime: song.dt }
       })
+      this.setAlbumSrc(song.al.picUrl)
+      this.setMusicName(song.name)
     })
     // 播放歌曲
     innerAudioContext.stop()

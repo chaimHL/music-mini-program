@@ -5,6 +5,7 @@ import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { recommendedSongsStore } from '../../stores/recommended-songs'
 import { musicChartsStore } from '../../stores/music-charts'
 import { playListStore } from '../../stores/play-list'
+import { musicPlayStore } from '../../stores/music-play'
 
 import { getSelectorRect } from '../../utils/index'
 
@@ -47,6 +48,13 @@ Page({
       store: playListStore,
       fields: ['playMusicList'],
       actions: ['setPlayMusicList', 'setplayMusicIndex']
+    })
+
+    // 正在播放的歌曲
+    this.musicPlayBindings = createStoreBindings(this, {
+      store: musicPlayStore,
+      fields: ['albumSrc', 'musicName'],
+      actions: []
     })
     // 绑定 MobX store ==end==
 
