@@ -5,7 +5,7 @@ import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { recommendedSongsStore } from '../../stores/recommended-songs'
 import { musicChartsStore } from '../../stores/music-charts'
 import { playListStore } from '../../stores/play-list'
-import { musicPlayStore, innerAudioContext } from '../../stores/music-play'
+import { musicPlayStore } from '../../stores/music-play'
 
 import { getSelectorRect } from '../../utils/index'
 
@@ -101,13 +101,13 @@ Page({
   // 点击了推荐歌曲的更多
   onTapMoreRec() {
     wx.navigateTo({
-      url: '/pages/more-songs/more-songs?type=recommended'
+      url: '/packageMusic/pages/more-songs/more-songs?type=recommended'
     })
   },
   // 点击了热门歌单的更多
   onTapMorePop() {
     wx.navigateTo({
-      url: '/pages/songs-list/songs-list'
+      url: '/packageMusic/pages/songs-list/songs-list'
     })
   },
   async getPlayList(this: any) {

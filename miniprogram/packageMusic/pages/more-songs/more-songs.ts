@@ -1,9 +1,9 @@
 // pages/recommended-songs/recommended-songs.ts
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
-import { musicChartsStore } from '../../stores/music-charts'
-import { recommendedSongsStore } from '../../stores/recommended-songs'
-import { playListStore } from '../../stores/play-list'
-import playlist from '../../services/requsets/playlist'
+import { musicChartsStore } from '../../../stores/music-charts'
+import { recommendedSongsStore } from '../../../stores/recommended-songs'
+import { playListStore } from '../../../stores/play-list'
+import playlist from '../../../services/requsets/playlist'
 
 Page({
   data: {

@@ -1,10 +1,10 @@
 // pages/music-play/music-play.ts
 import { throttle } from 'underscore'
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
-import { playListStore } from '../../stores/play-list'
-import { musicPlayStore, innerAudioContext } from '../../stores/music-play'
-import song from '../../services/requsets/song'
-import { formatLyric } from '../../utils/index'
+import { playListStore } from '../../../stores/play-list'
+import { musicPlayStore, innerAudioContext } from '../../../stores/music-play'
+import song from '../../../services/requsets/song'
+import { formatLyric } from '../../../utils/index'
 
 const app = getApp()
 // 播放模式

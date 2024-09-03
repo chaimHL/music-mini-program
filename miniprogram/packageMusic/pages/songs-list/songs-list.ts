@@ -1,5 +1,5 @@
 // pages/songs-list/songs-list.ts
-import playlist from '../../services/requsets/playlist'
+import playlist from '../../../services/requsets/playlist'
 
 Page({
   data: {

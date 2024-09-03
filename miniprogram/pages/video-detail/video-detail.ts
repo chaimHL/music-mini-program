@@ -1,38 +1,66 @@
-import { mvUrl, mvDetail } from "../../services/requsets/mv"
-
 // pages/video-detail/video-detail.ts
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    videoUrl: '',
-    detail: {}
+
   },
-  onLoad(options: any) {
-    const { id } = options
-    if (id) {
-      this.getMvUrl(id)
-      this.getMvDetail(id)
-    }
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad() {
+
   },
-  // 获取 mv 地址
-  async getMvUrl(id: string) {
-    try {
-      const res = await mvUrl(id)
-      this.setData({
-        videoUrl: res.data.url
-      })
-    } catch (error) {
-      console.log(error)
-    }
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
-  // 获取 mv 详情
-  async getMvDetail(id: string) {
-    try {
-      const res = await mvDetail(id)
-      this.setData({
-        detail: res.data || {}
-      })
-    } catch (error) {
-      console.log(error)
-    }
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
   }
 })

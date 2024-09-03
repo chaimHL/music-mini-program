@@ -2,11 +2,22 @@
   "pages": [
     "pages/tabbar-music/tabbar-music",
     "pages/tabbar-video/tabbar-video",
-    "pages/video-detail/video-detail",
-    "pages/search/search",
-    "pages/songs-list/songs-list",
-    "pages/more-songs/more-songs",
-    "pages/music-play/music-play"
+    "pages/search/search"
+  ],
+  "subPackages": [{
+      "root": "packageMusic",
+      "pages": [
+        "pages/more-songs/more-songs",
+        "pages/music-play/music-play",
+        "pages/songs-list/songs-list"
+      ]
+    },
+    {
+      "root": "packageVideo",
+      "pages": [
+        "pages/video-detail/video-detail"
+      ]
+    }
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

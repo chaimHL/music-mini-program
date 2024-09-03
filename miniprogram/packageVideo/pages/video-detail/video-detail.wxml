@@ -1,0 +1,6 @@
+<!--pages/video-detail/video-detail.wxml-->
+<video class="video" src="{{videoUrl}}" referrer-policy="origin" />
+<view class="detail">
+  <view class="name">{{detail.name}}</view>
+  <view class="artist">{{detail.artistName}}</view>
+</view>
