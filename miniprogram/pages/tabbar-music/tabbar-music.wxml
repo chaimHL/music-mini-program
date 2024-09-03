@@ -45,10 +45,10 @@
 <view class="play-bar-placeholder" wx:if="{{musicName}}"></view>
 <view class="play-bar" wx:if="{{musicName}}">
   <view class="left">
-    <image class="cover" src="{{albumSrc}}" mode="widthFix" />
+    <image class="cover rotate" style="animation-play-state: {{isPaused ? 'paused' : 'running'}};" src="{{albumSrc}}" mode="widthFix" />
     <view>{{musicName}}</view>
   </view>
-  <view class="right">
-    <image class="icon" src="/assets/imgs/music/play_icon.png" mode="widthFix" />
+  <view class="right" bind:tap="onTapPlayOrPause">
+    <image class="icon" src="/assets/imgs/music/{{isPaused ? 'play' : 'pause'}}_icon.png" mode="widthFix" />
   </view>
 </view>

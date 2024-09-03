@@ -2,15 +2,13 @@
 import { throttle } from 'underscore'
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { playListStore } from '../../stores/play-list'
-import { musicPlayStore } from '../../stores/music-play'
+import { musicPlayStore, innerAudioContext } from '../../stores/music-play'
 import song from '../../services/requsets/song'
 import { formatLyric } from '../../utils/index'
 
 const app = getApp()
 // 播放模式
 const playModeList = ['order', 'repeat', 'random']
-// 创建播放器
-const innerAudioContext = wx.createInnerAudioContext()
 Page({
   data: {
     tabs: ['歌曲', '歌词'],
@@ -21,7 +19,6 @@ Page({
     controlData: {} as any, // 播放数据
     isSliderChanging: false, // 记录是否正在拖动滑块
     isSliderChange: false, // 记录是否正在点击滑块
-    isPaused: false, // 是否暂停状态
     currentLrc: '', // 当前歌词
     currentLrcIndex: -1, // 当前歌词索引
     isFirstPlay: true,
@@ -37,8 +34,8 @@ Page({
     })
     this.musicPlayBindings = createStoreBindings(this, {
       store: musicPlayStore,
-      fields: [],
-      actions: ['setAlbumSrc', 'setMusicName']
+      fields: ['isPaused'],
+      actions: ['setAlbumSrc', 'setMusicName', 'onTapPlayOrPause']
     })
 
     // 计算内容区域高度
@@ -112,20 +109,6 @@ Page({
     },
     100
   ),
-  // 点击播放或暂停按钮
-  onTapPlayOrPause() {
-    if (innerAudioContext.paused) {
-      innerAudioContext.play()
-      this.setData({
-        isPaused: false
-      })
-    } else {
-      innerAudioContext.pause()
-      this.setData({
-        isPaused: true
-      })
-    }
-  },
   // 切换歌曲
   onChangeMusic(this: any, event: WechatMiniprogram.CustomEvent) {
     const { isNext } = event.detail

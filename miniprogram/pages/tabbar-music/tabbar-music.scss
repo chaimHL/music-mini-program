@@ -70,3 +70,17 @@ page {
     }
   }
 }
+
+.rotate {
+  animation: rotateAnimate 10s linear infinite;
+}
+
+@keyframes rotateAnimate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
