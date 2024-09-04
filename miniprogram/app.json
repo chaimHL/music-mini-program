@@ -6,6 +6,7 @@
   ],
   "subPackages": [{
       "root": "packageMusic",
+      "name": "music",
       "pages": [
         "pages/more-songs/more-songs",
         "pages/music-play/music-play",
@@ -14,11 +15,22 @@
     },
     {
       "root": "packageVideo",
+      "name": "video",
       "pages": [
         "pages/video-detail/video-detail"
       ]
     }
   ],
+  "preloadRule": {
+    "pages/tabbar-music/tabbar-music": {
+      "network": "all",
+      "packages": ["music"]
+    },
+    "pages/tabbar-video/tabbar-video": {
+      "network": "all",
+      "packages": ["packageVideo"]
+    }
+  },
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
