@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/tabbar-profile/tabbar-profile",
+          "pathName": "pages/tabbar-profile/tabbar-profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/music-play/music-play",
           "pathName": "pages/music-play/music-play",
           "query": "id=2124385868",

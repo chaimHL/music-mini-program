@@ -1,0 +1,10 @@
+<!--pages/tabbar-profile/tabbar-profile.wxml-->
+<form bindsubmit="onFormSubmit">
+  <view class="section user-info">
+    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image class="avatar" src="{{avatarUrl ? avatarUrl : '/assets/imgs/tabbar/my_normal.png'}}" mode="widthFix"></image>
+    </button>
+    <input type="nickname" class="nickname" name="nickname" value="{{nickName}}" placeholder="请输入昵称" />
+  </view>
+  <button class="btn" form-type="submit" type="primary">登录</button>
+</form>

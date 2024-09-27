@@ -2,6 +2,7 @@
   "pages": [
     "pages/tabbar-music/tabbar-music",
     "pages/tabbar-video/tabbar-video",
+    "pages/tabbar-profile/tabbar-profile",
     "pages/search/search"
   ],
   "subPackages": [{
@@ -47,6 +48,11 @@
       "text": "视频",
       "iconPath": "assets/imgs/tabbar/video_normal.png",
       "selectedIconPath": "assets/imgs/tabbar/video_active.png"
+    }, {
+      "pagePath": "pages/tabbar-profile/tabbar-profile",
+      "text": "我的",
+      "iconPath": "assets/imgs/tabbar/my_normal.png",
+      "selectedIconPath": "assets/imgs/tabbar/my_active.png"
     }]
   },
   "componentFramework": "glass-easel",
