@@ -1,11 +1,14 @@
 <!--components/more-songs-item/more-songs-item.wxml-->
 <view class="wrap" bind:tap="onTapSong">
   <view>
-    <text>{{index}}.</text>
-    <text>{{itemData.name}}</text>
+    <view>
+      <text>{{index}}.</text>
+      <text>{{itemData.name}}</text>
+    </view>
+    <view>
+      <image class="img" src="/assets/icons/sq.png" mode="widthFix" />
+      <text class="singer">{{itemData.ar[0].name}}</text>
+    </view>
   </view>
-  <view>
-    <image class="img" src="/assets/icons/sq.png" mode="widthFix" />
-    <text class="singer">{{itemData.ar[0].name}}</text>
-  </view>
+  <van-icon name="ellipsis" color="#999" catch:tap="onTapMore" />
 </view>

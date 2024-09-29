@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "packageMusic/pages/more-songs/more-songs",
+          "pathName": "packageMusic/pages/more-songs/more-songs",
+          "query": "type=pop&id=8382411297",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/tabbar-profile/tabbar-profile",
           "pathName": "pages/tabbar-profile/tabbar-profile",
           "query": "",
@@ -19,13 +26,6 @@
           "name": "pages/music-play/music-play",
           "pathName": "pages/music-play/music-play",
           "query": "id=2124385868",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/songs-list/songs-list",
-          "pathName": "pages/songs-list/songs-list",
-          "query": "",
           "launchMode": "default",
           "scene": null
         },

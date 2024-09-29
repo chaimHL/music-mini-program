@@ -3,7 +3,7 @@
   <pop-song-header songsData="{{songsData}}" />
 </view>
 <view wx:else class="title">{{songsData.name}}</view>
-<view>
+<view style="padding-right: 40rpx;">
   <block wx:for="{{songsData.tracks}}" wx:key="id">
     <more-songs-item itemData="{{item}}" index="{{index+1}}" data-index="{{index}}" bind:tap="onTapSong" />
   </block>

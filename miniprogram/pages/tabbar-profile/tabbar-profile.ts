@@ -1,8 +1,13 @@
 // pages/tabbar-profile/tabbar-profile.ts
 Page({
   data: {
+    isLogin: false,
     avatarUrl: '',
-    nickName: ''
+    nickName: '',
+    tabs: [
+      { name: '收藏', type: 'star' },
+      { name: '喜欢', type: 'like' }
+    ]
   },
 
   onLoad() {
@@ -15,6 +20,7 @@ Page({
     }
     if (nickname) {
       this.setData({
+        isLogin: true,
         nickName: nickname
       })
     }
@@ -35,6 +41,7 @@ Page({
     const { nickname } = event.detail.value
     wx.setStorageSync('nickname', nickname)
     this.setData({
+      isLogin: true,
       nickName: nickname
     })
     // 获取 openid

@@ -6,6 +6,7 @@ page {
 
 .section {
   padding: 20rpx;
+  margin-bottom: 20rpx;
   background-color: #fff;
   border-radius: 10rpx;
 }
@@ -34,4 +35,14 @@ page {
 
 .btn {
   margin-top: 30rpx;
+}
+
+.favor-wrap {
+  display: flex;
+  justify-content: space-around;
+  font-size: 28rpx;
+
+  .txt {
+    margin-left: 12rpx;
+  }
 }

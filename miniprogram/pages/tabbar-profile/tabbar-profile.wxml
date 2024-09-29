@@ -6,5 +6,15 @@
     </button>
     <input type="nickname" class="nickname" name="nickname" value="{{nickName}}" placeholder="请输入昵称" />
   </view>
-  <button class="btn" form-type="submit" type="primary">登录</button>
+  <button wx:if="{{!isLogin}}" class="btn" form-type="submit" type="primary">登录</button>
 </form>
+<view class="section favor-wrap">
+  <block wx:for="{{tabs}}" wx:key="name">
+    <view>
+      <van-icon name="{{item.type}}" color="#26CE8A" />
+      <text class="txt">{{item.name}}</text>
+    </view>
+  </block>
+
+
+</view>
