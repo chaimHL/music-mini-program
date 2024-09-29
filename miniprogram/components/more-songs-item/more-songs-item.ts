@@ -1,7 +1,5 @@
 // components/more-songs-item/more-songs-item.ts
-const db = wx.cloud.database()
-const starCollection = db.collection('c_star')
-const likeCollection = db.collection('c_like')
+import { starCollection, likeCollection } from '../../utils/index'
 Component({
   properties: {
     itemData: {
@@ -35,15 +33,11 @@ Component({
       let res = null
       switch (index) {
         case 0: // 收藏
-          res = await starCollection.add({
-            data: this.properties.itemData
-          })
+          res = await starCollection.add(this.properties.itemData)
           break
 
         case 1: // 喜欢
-          res = await likeCollection.add({
-            data: this.properties.itemData
-          })
+          res = await likeCollection.add(this.properties.itemData)
           break
       }
       if (res) {
