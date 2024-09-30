@@ -10,7 +10,7 @@
 </form>
 <view class="section favor-wrap">
   <block wx:for="{{tabs}}" wx:key="name">
-    <view>
+    <view bind:tap="onTapFavor" data-item="{{item}}">
       <van-icon name="{{item.type}}" color="#26CE8A" />
       <text class="txt">{{item.name}}</text>
     </view>

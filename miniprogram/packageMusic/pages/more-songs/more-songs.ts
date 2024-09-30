@@ -7,7 +7,8 @@ import playlist from '../../../services/requsets/playlist'
 
 Page({
   data: {
-    type: '' // 推荐歌曲或巅峰榜：ranking
+    type: '', // 推荐歌曲或巅峰榜：ranking
+    songsData: {}
   },
   onLoad(this: any, options: any) {
     const { type, toplistType, id } = options
@@ -46,6 +47,8 @@ Page({
       })
     } else if (type === 'pop') {
       this.getPopSongs(id)
+    } else if (type === 'star' || type === 'like') {
+      this.processFavor(type)
     }
     // 绑定播放列表 store
     // 播放歌曲列表
@@ -84,5 +87,19 @@ Page({
     this.setPlayMusicList(this.data.songsData.tracks)
     const { index } = event.currentTarget.dataset
     this.setplayMusicIndex(index)
+  },
+
+  // 处理收藏、喜欢
+  async processFavor(type: string) {
+    const db = wx.cloud.database()
+    const collection = db.collection('c_' + type)
+    const res = await collection.get()
+    const name = type === 'star' ? '我的收藏' : '我的喜欢'
+    this.setData({
+      songsData: {
+        name,
+        tracks: res.data || []
+      }
+    })
   }
 })

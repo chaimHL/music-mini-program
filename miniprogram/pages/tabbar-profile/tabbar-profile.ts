@@ -51,5 +51,12 @@ Page({
 
     const { openid } = res.result as Extract<ICloud.CallFunctionResult, 'openid'>
     wx.setStorageSync('openid', openid)
+  },
+
+  onTapFavor(event: WechatMiniprogram.CustomEvent) {
+    const { type } = event.currentTarget.dataset.item
+    wx.navigateTo({
+      url: `/packageMusic/pages/more-songs/more-songs?type=${type}`
+    })
   }
 })
