@@ -19,11 +19,11 @@ class MyCollection {
     }
   }
 
-  update(condition: DB.DocumentId | DB.IQueryCondition) {
+  update(condition: DB.DocumentId | DB.IQueryCondition, data: any) {
     if (typeof condition === 'number' || typeof condition === 'string') {
-      return this.collection.doc(condition).update()
+      return this.collection.doc(condition).update({ data })
     } else {
-      return (this.collection.where(condition) as ExtendedQuery).update()
+      return (this.collection.where(condition) as ExtendedQuery).update({ data })
     }
   }
 
@@ -38,3 +38,4 @@ class MyCollection {
 
 export const starCollection = new MyCollection('c_star')
 export const likeCollection = new MyCollection('c_like')
+export const songSheetCollection = new MyCollection('c_song_sheet')

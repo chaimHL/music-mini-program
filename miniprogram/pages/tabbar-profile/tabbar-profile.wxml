@@ -15,6 +15,16 @@
       <text class="txt">{{item.name}}</text>
     </view>
   </block>
-
-
 </view>
+
+<section-title title="我的歌单" showMore="{{false}}" />
+<view class="section">
+  <view class="operation">
+    <text class="name">创建歌单</text>
+    <van-icon name="plus" color="#999" bind:tap="onAddSongSheet" />
+  </view>
+</view>
+
+<van-dialog use-slot title="创建歌单" message="弹窗内容" show="{{ showDialog }}" show-cancel-button custom-class="my-custom-class" bind:confirm="onTapConfirm">
+  <input class="input" auto-focus model:value="{{sheetName}}" placeholder="输入歌单名称" />
+</van-dialog>

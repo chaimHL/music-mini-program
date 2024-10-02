@@ -1,4 +1,5 @@
 // pages/tabbar-profile/tabbar-profile.ts
+import { songSheetCollection } from '../../utils/index'
 Page({
   data: {
     isLogin: false,
@@ -7,7 +8,9 @@ Page({
     tabs: [
       { name: '收藏', type: 'star' },
       { name: '喜欢', type: 'like' }
-    ]
+    ],
+    showDialog: false,
+    sheetName: ''
   },
 
   onLoad() {
@@ -58,5 +61,28 @@ Page({
     wx.navigateTo({
       url: `/packageMusic/pages/more-songs/more-songs?type=${type}`
     })
+  },
+
+  // 添加歌单
+  onAddSongSheet() {
+    this.setData({
+      showDialog: true
+    })
+  },
+
+  async onTapConfirm() {
+    const name = this.data.sheetName
+    const data = {
+      name,
+      songs: []
+    }
+    const res = await songSheetCollection.add(data)
+    if (res) {
+      wx.showToast({
+        title: '创建歌单成功',
+        icon: 'success',
+        duration: 2000
+      })
+    }
   }
 })

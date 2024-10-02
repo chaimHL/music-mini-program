@@ -46,3 +46,22 @@ page {
     margin-left: 12rpx;
   }
 }
+
+.operation {
+  display: flex;
+  justify-content: space-between;
+
+  .name {
+    font-size: 28rpx;
+  }
+}
+
+.my-custom-class {
+  .input {
+    margin: 20rpx;
+    border: 1rpx solid #999;
+    padding: 0 12rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+  }
+}
