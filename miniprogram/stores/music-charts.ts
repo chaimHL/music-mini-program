@@ -13,5 +13,5 @@ export const musicChartsStore = observable({
   }),
   soaringSong: action(function (this: any, obj: any) {
     this.soaringSongList = obj || {}
-  }),
+  })
 })

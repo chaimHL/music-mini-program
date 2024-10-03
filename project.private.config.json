@@ -11,6 +11,13 @@
         {
           "name": "packageMusic/pages/more-songs/more-songs",
           "pathName": "packageMusic/pages/more-songs/more-songs",
+          "query": "type=recommended",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "packageMusic/pages/more-songs/more-songs",
+          "pathName": "packageMusic/pages/more-songs/more-songs",
           "query": "type=pop&id=8382411297",
           "launchMode": "default",
           "scene": null

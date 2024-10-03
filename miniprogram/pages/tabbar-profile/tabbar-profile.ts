@@ -1,4 +1,6 @@
 // pages/tabbar-profile/tabbar-profile.ts
+import { createStoreBindings } from 'mobx-miniprogram-bindings'
+import { songSheetStore } from '../../stores/song-sheet'
 import { songSheetCollection } from '../../utils/index'
 Page({
   data: {
@@ -13,7 +15,18 @@ Page({
     sheetName: ''
   },
 
-  onLoad() {
+  onLoad(this: any) {
+    // 绑定 MobX store
+    this.storeBindings = createStoreBindings(this, {
+      store: songSheetStore,
+      fields: ['songSheet'],
+      actions: ['setSongSheet']
+    })
+
+    songSheetCollection.query({}).then(res => {
+      this.setSongSheet(res.data)
+    })
+
     const avatarUrl = wx.getStorageSync('avatarUrl')
     const nickname = wx.getStorageSync('nickname')
     if (avatarUrl) {
@@ -27,6 +40,11 @@ Page({
         nickName: nickname
       })
     }
+  },
+
+  onUnload(this: any) {
+    // 解绑
+    this.storeBindings.destroyStoreBindings()
   },
 
   // 用户头像

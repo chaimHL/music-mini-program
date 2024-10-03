@@ -1,4 +1,4 @@
-// pages/recommended-songs/recommended-songs.ts
+// packageMusic/pages/more-songs/more-songs.ts
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { musicChartsStore } from '../../../stores/music-charts'
 import { recommendedSongsStore } from '../../../stores/recommended-songs'

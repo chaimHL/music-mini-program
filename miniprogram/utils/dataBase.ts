@@ -27,7 +27,9 @@ class MyCollection {
     }
   }
 
-  query(offset: number, max: number, condition: DB.DocumentId | DB.IQueryCondition) {
+  query(condition: DB.DocumentId, offset?: number, max?: number): Promise<DB.IQuerySingleResult>
+  query(condition: DB.IQueryCondition, offset?: number, max?: number): Promise<DB.IQueryResult>
+  query(condition: DB.DocumentId | DB.IQueryCondition, offset = 0, max = 20) {
     if (typeof condition === 'number' || typeof condition === 'string') {
       return this.collection.doc(condition).get()
     } else {
