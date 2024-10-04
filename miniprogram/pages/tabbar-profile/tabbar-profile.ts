@@ -23,10 +23,6 @@ Page({
       actions: ['setSongSheet']
     })
 
-    songSheetCollection.query({}).then(res => {
-      this.setSongSheet(res.data)
-    })
-
     const avatarUrl = wx.getStorageSync('avatarUrl')
     const nickname = wx.getStorageSync('nickname')
     if (avatarUrl) {
@@ -40,6 +36,10 @@ Page({
         nickName: nickname
       })
     }
+  },
+
+  onReady(this: any) {
+    this.setSongSheet()
   },
 
   onUnload(this: any) {
@@ -88,7 +88,7 @@ Page({
     })
   },
 
-  async onTapConfirm() {
+  async onTapConfirm(this: any) {
     const name = this.data.sheetName
     const data = {
       name,
@@ -101,6 +101,18 @@ Page({
         icon: 'success',
         duration: 2000
       })
+      this.setSongSheet()
+    }
+  },
+
+  // 删除歌单
+  async onDeleteSongSheet(this: any, event: WechatMiniprogram.CustomEvent) {
+    const res = await songSheetCollection.remove(event.detail.id)
+    if (res) {
+      wx.showToast({
+        title: "删除歌单成功"
+      })
+      this.setSongSheet()
     }
   }
 })

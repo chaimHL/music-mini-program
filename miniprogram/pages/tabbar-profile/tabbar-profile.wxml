@@ -23,6 +23,9 @@
     <text class="name">创建歌单</text>
     <van-icon name="plus" color="#999" bind:tap="onAddSongSheet" />
   </view>
+  <block wx:for="{{songSheet}}" wx:key="_id">
+    <song-sheet-item item="{{item}}" bind:deleteSongSheet="onDeleteSongSheet" />
+  </block>
 </view>
 
 <van-dialog use-slot title="创建歌单" message="弹窗内容" show="{{ showDialog }}" show-cancel-button custom-class="my-custom-class" bind:confirm="onTapConfirm">

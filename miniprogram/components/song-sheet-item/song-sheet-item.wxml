@@ -1,0 +1,10 @@
+<!--components/song-sheet-item/song-sheet-item.wxml-->
+<view class="wrap">
+  <image class="img" wx:if="{{item.songs[0]}}" src="{{item.songs[0].al.picUrl}}" mode="widthFix" />
+  <image class="img" wx:else src="/assets/imgs/music/music.png" mode="widthFix" />
+  <view class="info">
+    <view>{{item.name}}</view>
+    <view class="count">{{item.songs.length}}首</view>
+  </view>
+  <van-icon name="delete-o" color="#666" catch:tap="onDelete" data-id="{{item._id}}" />
+</view>

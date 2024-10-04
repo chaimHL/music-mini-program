@@ -1,0 +1,21 @@
+/* components/song-sheet-item/song-sheet-item.wxss */
+.wrap {
+  display: flex;
+  margin-top: 20rpx;
+
+  .img {
+    width: 120rpx;
+    height: 120rpx;
+  }
+
+  .info {
+    margin-left: 20rpx;
+    flex: 1;
+
+    .count {
+      color: #999;
+      font-size: 28rpx;
+      margin-top: 4rpx;
+    }
+  }
+}
