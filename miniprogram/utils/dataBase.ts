@@ -1,4 +1,4 @@
-const db = wx.cloud.database()
+export const db = wx.cloud.database()
 class MyCollection {
   collection: DB.CollectionReference
   constructor(collectionName: string) {

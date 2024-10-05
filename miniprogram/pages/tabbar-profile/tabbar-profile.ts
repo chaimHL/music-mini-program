@@ -38,6 +38,10 @@ Page({
     }
   },
 
+  onShow(this: any) {
+    this.setSongSheet()
+  },
+
   onReady(this: any) {
     this.setSongSheet()
   },

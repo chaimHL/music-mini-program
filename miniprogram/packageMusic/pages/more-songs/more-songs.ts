@@ -3,6 +3,7 @@ import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { musicChartsStore } from '../../../stores/music-charts'
 import { recommendedSongsStore } from '../../../stores/recommended-songs'
 import { playListStore } from '../../../stores/play-list'
+import { songSheetStore } from '../../../stores/song-sheet'
 import playlist from '../../../services/requsets/playlist'
 
 Page({
@@ -57,11 +58,20 @@ Page({
       fields: ['playMusicList'],
       actions: ['setPlayMusicList', 'setplayMusicIndex']
     })
+
+    // 绑定歌单列表 store
+    this.songSheetBindings = createStoreBindings(this, {
+      store: songSheetStore,
+      fields: ['songSheet'],
+      actions: ['setSongSheet']
+    })
   },
   onReady(this: any) {
     wx.setNavigationBarTitle({
       title: this.data.songsData?.name || ''
     })
+    // 获取歌单数据
+    this.setSongSheet()
   },
   onUnload(this: any) {
     if (this.data.type === 'ranking') {
@@ -73,6 +83,9 @@ Page({
     }
     // 解绑 播放列表 store
     this.playListBindings.destroyStoreBindings()
+
+    // 解绑歌单列表 store
+    this.songSheetBindings.destroyStoreBindings()
   },
   // 获取热门歌单
   async getPopSongs(id: string) {
